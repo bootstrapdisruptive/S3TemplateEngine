@@ -20,7 +20,7 @@ All you have to do is follow the installation paragraph, and you can write your 
    * ...
  * Connect your domain in AWS Route53 and create an SSL certificate with the AWS Certificate Manager.
    * ...
- * Execute the "S3TemaplateEngine.json" in CLoudFormation
+ * Execute the "S3TemaplateEngine.json" in CloudFormation
    * Download the github repository. 
    * Cretae an AWS account or sign in into an existing one
    * In the AWS console, make sure you are on target region (**S3TemplateEngine is currently only working within a single region**)
