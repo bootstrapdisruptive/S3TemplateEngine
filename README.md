@@ -90,13 +90,35 @@ Whereas *name* is a filename or path/filename inside the "part/" directory.
     </head>
 ```
 
+## Installation of optional Webiny extension
+...
 
+## Commands of optional Webiny extension
 ### \<dbpart\>
+
+**Action**
+Replaces the command with the content from an Webiny maintained element. This is handy, if you want to give an editor access to static elements like a privacy statement or a tracking tag.
+
+**Syntax**
+
+```html
+<dbpart>*name*</dbpart>
+```
+Whereas *name* is the "content_id" of a Webiny "Static Contents" or "Static Code Contents" element.
+
+**Example**
+
+```html
+    <body>
+        <dbpart>impressum</dbpart>
+    </body>
+```
+
 ### \<dbmulti\>
 
 **Action**
 
-Replaces the command with a defined HTML template multiple times. Exactly once for each entry in a DynmoDB table matching the filter criteria. Handy for cretaing an overview page of articles.
+Replaces the command with a defined HTML template multiple times. Exactly once for each entry in the published Webiny content, matching the filter criteria. Handy for cretaing an overview page of articles.
 
 **Syntax**
 
@@ -123,7 +145,7 @@ Whereas *json* is a json object with the following attributes:
 ### \<dbitem\>
 **Action**
 
-Inside a \<dbmulti\>-command: Replaces the \<dbitem\>-command with the content of a database field of the current element.
+Inside a \<dbmulti\>-command: Replaces the \<dbitem\>-command with the content of a Webiny field of the current element.
 
 **Syntax**
 
@@ -141,7 +163,7 @@ Whereas *fieldname* is the name of an attribute (column) from the DynamoDB.
 ### \<dbmultifile\>
 **Action**
 
-Creates multiple files out of one template file, by using one unqiue database attribute as suffix to the created filenames. Handy for generating individual pooages for articles.
+Creates multiple files out of one template file, by using one unqiue database attribute as suffix to the created filenames. Handy for generating individual pages for articles.
 
 **Syntax**
 
