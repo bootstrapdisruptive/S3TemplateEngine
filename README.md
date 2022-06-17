@@ -10,7 +10,7 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 6. [Installation of optional Webiny extension](## Installation of optional Webiny extension)
 7. [Commands of optional Webiny extension](## Commands of optional Webiny extension)
 
-## Motivation
+## Motivation<a name="Motivation"></a>
 AWS S3 and AWS Cloudfront offer a great platform to publish websites and web apps at a low cost. However, you need to create static HTML files elsewhere, and getting everything up and running can be a pain without a decent CMS.
 
 **This project is for you, if** you want to manually create HTML and benefit from low-cost serverless computing but still want to:
