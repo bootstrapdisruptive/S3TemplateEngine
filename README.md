@@ -1,6 +1,15 @@
 # S3TemplateEngine
 S3TemplateEngine is a lightweight template engine for AWS serverless computing, helping you create AWS S3 / AWS Cloudfront hosted websites. It optionally integrates Webiny.
 
+## Table of Contents
+1. [Motivation](## Motivation)
+2. [Concept](## Concept)
+3. [Installation](## Installation)
+4. [Useage](## Useage)
+5. [Commands](## Commands)
+6. [Installation of optional Webiny extension](## Installation of optional Webiny extension)
+7. [Commands of optional Webiny extension](## Commands of optional Webiny extension)
+
 ## Motivation
 AWS S3 and AWS Cloudfront offer a great platform to publish websites and web apps at a low cost. However, you need to create static HTML files elsewhere, and getting everything up and running can be a pain without a decent CMS.
 
