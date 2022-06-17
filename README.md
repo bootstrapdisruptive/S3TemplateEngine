@@ -89,21 +89,21 @@ Whereas *name* is a filename or path/filename inside the "part/" directory.
         <part>head.part</part>
     </head>
 ```
-### \<fileattribute\>
+
+
 ### \<dbpart\>
-### \<dbitem\>
 ### \<dbmulti\>
 
 **Action**
 
-Replaces the command with a defined HTML template multiple times. Exactly once for each entry in a DynmoDB table matching the filter criteria.
+Replaces the command with a defined HTML template multiple times. Exactly once for each entry in a DynmoDB table matching the filter criteria. Handy for cretaing an overview page of articles.
 
 **Syntax**
 
 ```html
 <dbmulti>*json*</dbmulti>
 ```
-Whereas *json* is a json object with the following attributes;
+Whereas *json* is a json object with the following attributes:
 ```json
 {
   "table":"Name Of Dynamo DB table",
@@ -120,7 +120,67 @@ Whereas *json* is a json object with the following attributes;
 ```html
 <dbmulti>{"table":"PROD_Articles","filter":[{"forWebsite":{"BOOL":true}}],"template":"<a href='artikeldetail-<dbitem>id</dbitem>.html'><h2><dbitem>headline</dbitem></h2><div class='content'><dbitem>readingtime</dbitem>&nbsp;min</div></a>"}</dbmulti>
 ```
+### \<dbitem\>
+**Action**
+
+Inside a \<dbmulti\>-command: Replaces the \<dbitem\>-command with the content of a database field of the current element.
+
+**Syntax**
+
+```html
+<dbitem>*fieldname*</dbitem>
+```
+Whereas *fieldname* is the name of an attribute (column) from the DynamoDB.
+
+**Example**
+
+```html
+<dbitem>headline</dbitem>
+```
 
 ### \<dbmultifile\>
- 
+**Action**
 
+Creates multiple files out of one template file, by using one unqiue database attribute as suffix to the created filenames. Handy for generating individual pooages for articles.
+
+**Syntax**
+
+Must be first line of the tmeplate frile (even before \<!Doctype html\>)
+```html
+<dbmultifile>*json*</dbmultifile>
+```
+Whereas *json* is a json object with the following attributes:
+```json
+{
+  "table":"Name Of Dynamo DB table",
+  "filenamesuffix":"Dynamo DB field (muust be unique)",
+  "filter":[
+    {"AttributeName":{"DynamoDBType":"AttributeContent"}},
+    ...
+  ]
+}
+```
+
+**Example**
+
+```html
+<dbmultifile>{"table":"PROD_Articles","filenamesuffix":"id","filter":[{"forWebsite":{"BOOL":true}}]}</dbmultifile>
+```
+### \<fileattribute\>
+
+**Action**
+
+Inside a \<dbmultifile\>-command: Replaces the \<fileattribute\>-command with the current filename. Handy for generation of canonical tags.
+
+**Syntax**
+
+```html
+<fileattribute>filename</fileattribute>
+```
+Currently filename is the only command available.
+
+**Example**
+
+```html
+<fileattribute>filename</fileattribute>
+```
