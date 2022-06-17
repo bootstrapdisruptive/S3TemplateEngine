@@ -41,8 +41,13 @@ Just put your template (usual website files, html with the additional commands s
  * gfx/ (usually used for visuals used on the website and css files)
  * js/ (used for javascript files) 
 
+**Content from the following folders will be processed with the commands shown below:**
+ * html/ (will be the root of the output folder)
+   * The following files are madatory:
+     * index.html (your main page)
+     * 404.html (your error page)
+ * part/   
 
-The following pages are madatory:
- * index.html (your main page)
- * 404.html (your error page)
+**Other folders and files int the root will be ignored**
+
 
