@@ -30,7 +30,7 @@ All you have to do is follow the installation paragraph, and you can write your 
      * Select "Template is ready" and "Upload a template file"
      * Click on "choose file" and select "S3TemaplateEngine.json"
      * Click on "Next"
-     * Fill out Stakc Name and Parameters
+     * Fill out Stack Name and Parameters
      * Click "Next"
      * Check "I acknowledge that AWS CloudFormation might create IAM resources with custom names."
      * Click "Create Stack"
