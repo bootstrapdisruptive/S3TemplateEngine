@@ -42,7 +42,7 @@ Just put your template (usual website files, html with the additional commands s
  * js/ (used for javascript files) 
 
 **Content from the following folders will be processed with the commands shown below:**
- * html/ (will be the root of the output folder)
+ * website/ (will be the root of the output folder)
    * The following files are madatory:
      * index.html (your main page)
      * 404.html (your error page)
