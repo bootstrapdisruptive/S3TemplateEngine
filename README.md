@@ -35,7 +35,18 @@ All you have to do is follow the installation paragraph, and you can write your 
      * Check "I acknowledge that AWS CloudFormation might create IAM resources with custom names."
      * Click "Create Stack"
  * Connect your Route53 domain to the CloundFront that was created.
-   * ...
+   * In the AWS console, open Route53
+   * Navigate to your hosted zone
+   * Generate record "empty" "A"
+     * Click on "Create record"
+     * leave the box before your doamin name empty
+     * choose "A" as record type 
+     * Check "Alias" and choose "Alias to CloudFront distribution"
+     * Choose the distribution that was created earlier (by CloudFormation)
+   * Click "Add anothe record" and repeat the same for "empty" "AAAA"
+   * Click "Add anothe record" and repeat the same for "www" "A"
+   * Click "Add anothe record" and repeat the same for "www" "AAAA"
+   * Click on Create records
  * Delete the S3 bucket you created in the second step.
    * ...
 
