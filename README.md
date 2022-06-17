@@ -27,3 +27,8 @@ All you have to do is follow the installation paragraph, and you can write your 
      * ...
 
 ## Useage
+...
+The following pages are madatory:
+ * index.html (your main page)
+ * 404.html (your error page)
+
