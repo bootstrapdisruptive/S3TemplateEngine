@@ -3,12 +3,12 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 
 ## Table of Contents
 1. [Motivation](#Motivation)
-2. [Concept](## Concept)
-3. [Installation](## Installation)
-4. [Useage](## Useage)
-5. [Commands](## Commands)
-6. [Installation of optional Webiny extension](## Installation of optional Webiny extension)
-7. [Commands of optional Webiny extension](## Commands of optional Webiny extension)
+2. [Concept](#Concept)
+3. [Installation](#Installation)
+4. [Useage](#Useage)
+5. [Commands](#Commands)
+6. [Installation of optional Webiny extension](#InstallationWebiny)
+7. [Commands of optional Webiny extension](#CommandsWebiny)
 
 ## Motivation<a name="Motivation"></a>
 AWS S3 and AWS Cloudfront offer a great platform to publish websites and web apps at a low cost. However, you need to create static HTML files elsewhere, and getting everything up and running can be a pain without a decent CMS.
@@ -19,12 +19,12 @@ AWS S3 and AWS Cloudfront offer a great platform to publish websites and web app
 * Automatically create pages dynamically (like an individual page for each article you put in a system, rather than an SEO unfriendly AJAX load of content on a generic page)
 * Have a pipeline that optimizes/minifies your code output
 
-## Concept
+## Concept<a name="Concept"></a>
 S3TemplateEngine uses serverless technologies (S3, Lambda, DynamoDB, Cloudformation) to provide a straightforward but powerful template language. 
 
 All you have to do is follow the installation paragraph, and you can write your HTML-based templates, put them into a specific S3 bucket and see the magic happen.
 
-## Installation
+## Installation<a name="Installation"></a>
  * Download the github repository.
    * ...
  * Create an S3 bucket and upload the content of the folder "s3" (multiple zip files) into it.
@@ -59,7 +59,7 @@ All you have to do is follow the installation paragraph, and you can write your 
  * Delete the S3 bucket you created in the second step.
    * ...
 
-## Useage
+## Useage<a name="Useage"></a>
 Just put your template (usual website files, html with the additional commands shown below) in the "prod-website-code-\<your page name\>" s3 bucket. The system will behave as follows:
 
 **Content from the following folders will be synced (copied or deleted) to the output S3 bucket:**
@@ -76,7 +76,7 @@ Just put your template (usual website files, html with the additional commands s
 
 **Other folders and files int the root will be ignored**
 
-## Commands
+## Commands<a name="Commands"></a>
 Inside the files you put into "website/" and "part/", you can use the following tags:
 ### \<part\>
 
@@ -99,10 +99,10 @@ Whereas *name* is a filename or path/filename inside the "part/" directory.
     </head>
 ```
 
-## Installation of optional Webiny extension
+## Installation of optional Webiny extension<a name="InstallationWebiny"></a>
 ...
 
-## Commands of optional Webiny extension
+## Commands of optional Webiny extension<a name="CommandsWebiny"></a>
 ### \<dbpart\>
 
 **Action**
