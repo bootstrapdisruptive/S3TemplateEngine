@@ -67,4 +67,60 @@ Just put your template (usual website files, html with the additional commands s
 
 **Other folders and files int the root will be ignored**
 
+## Commands
+Inside the files you put into "website/" and "part/", you can use the following tags:
+### \<part\>
+
+**Action**
+
+Replaces the command with the content from another file. This is handy, if you want to reuse HTML headers or navigation.
+
+**Syntax**
+
+```html
+<part>*name*</part>
+```
+Whereas *name* is a filename or path/filename inside the "part/" directory.
+
+**Example**
+
+```html
+    <head>
+        <part>head.part</part>
+    </head>
+```
+### \<fileattribute\>
+### \<dbpart\>
+### \<dbitem\>
+### \<dbmulti\>
+
+**Action**
+
+Replaces the command with a defined HTML template multiple times. Exactly once for each entry in a DynmoDB table matching the filter criteria.
+
+**Syntax**
+
+```html
+<dbmulti>*json*</dbmulti>
+```
+Whereas *json* is a json object with the following attributes;
+```json
+{
+  "table":"Name Of Dynamo DB table",
+  "filter":[
+    {"AttributeName":{"DynamoDBType":"AttributeContent"}},
+    ...
+  ],
+  "template":"an HTML template, that will probably contain <dbitem> elements"
+}
+```
+
+**Example**
+
+```html
+<dbmulti>{"table":"PROD_Articles","filter":[{"forWebsite":{"BOOL":true}}],"template":"<a href='artikeldetail-<dbitem>id</dbitem>.html'><h2><dbitem>headline</dbitem></h2><div class='content'><dbitem>readingtime</dbitem>&nbsp;min</div></a>"}</dbmulti>
+```
+
+### \<dbmultifile\>
+ 
 
