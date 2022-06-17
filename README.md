@@ -16,5 +16,14 @@ S3TemplateEngine uses serverless technologies (S3, Lambda, DynamoDB, Cloudformat
 All you have to do is follow the installation paragraph, and you can write your HTML-based templates, put them into a specific S3 bucket and see the magic happen.
 
 ## Installation
+ * Execute the "S3TemaplateEngine." in CLoudFormation
+   * Download the github repository. 
+   * Cretae an AWS account or sign in into an existing one
+   * In the AWS console, make sure you are on target region (**S3TemplateEngine is currently only working within a single region**)
+   * go to "CloudFormation"
+     * Click on "Create Stack"
+     * Select "Template is ready" and "Upload a template file"
+     * Click on "choose file" and select "S3TemaplateEngine."
+     * ...
 
 ## Useage
