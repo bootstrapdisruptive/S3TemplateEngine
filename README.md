@@ -18,6 +18,8 @@ All you have to do is follow the installation paragraph, and you can write your 
 ## Installation
  * Create an S3 bucket and upload the content of the folder "s3" (multiple zip files) into it
    * ...
+ * Connect your domain in AWS Route53 and create an SSL certificate with the AWS Certificate Manager.
+   * ...
  * Execute the "S3TemaplateEngine.json" in CLoudFormation
    * Download the github repository. 
    * Cretae an AWS account or sign in into an existing one
