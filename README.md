@@ -35,7 +35,9 @@ All you have to do is follow the installation paragraph, and you can write your 
      * Check "I acknowledge that AWS CloudFormation might create IAM resources with custom names."
      * Click "Create Stack"
  * Connect your Route53 domain to the CloundFront that was created.
- * Delete the S3 bucket you created in the first step step.
+   * ...
+ * Delete the S3 bucket you created in the second step.
+   * ...
 
 ## Useage
 Just put your template (usual website files, html with the additional commands shown below) in the "prod-website-code-<your page name>". The system will behave as follows:
