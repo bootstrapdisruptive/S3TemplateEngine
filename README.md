@@ -29,8 +29,18 @@ All you have to do is follow the installation paragraph, and you can write your 
 ## Installation<a name="Installation"></a>
 <details>
   <summary>Download the github repository.</summary>
-  
-   * ...
+
+Use your preferred way to pull the project, or (if you are not that experienced with git), doe it manually:
+
+   * Go to the project github page ( https://github.com/HOKComics/S3TemplateEngine )
+
+   * Right Click on "S3TemplateEngine.json" and choose "save link as"
+   * Download the file ( __Hint: this file is refered as "*S3TemaplateEngine.json*" later on__ )
+   
+   * Click on "S3"   
+   * Right Click on the file inside and choose "save link as"
+   * Download the file ( __Hint: this file is refered as "* files inside the s3 folder*" later on__ )
+
 </details>
 <details>
   <summary>Create an S3 bucket and upload the content of the folder "s3" (multiple zip files) into it.</summary>
