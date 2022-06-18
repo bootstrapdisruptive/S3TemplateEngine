@@ -25,13 +25,24 @@ S3TemplateEngine uses serverless technologies (S3, Lambda, DynamoDB, Cloudformat
 All you have to do is follow the installation paragraph, and you can write your HTML-based templates, put them into a specific S3 bucket and see the magic happen.
 
 ## Installation<a name="Installation"></a>
- * Download the github repository.
+<details>
+  <summary>Download the github repository.</summary>
+  
    * ...
- * Create an S3 bucket and upload the content of the folder "s3" (multiple zip files) into it.
+</details>
+<details>
+  <summary>Create an S3 bucket and upload the content of the folder "s3" (multiple zip files) into it.</summary>
+  
    * ...
- * Connect your domain in AWS Route53 and create an SSL certificate with the AWS Certificate Manager.
+</details>
+<details>
+  <summary>Connect your domain in AWS Route53 and create an SSL certificate with the AWS Certificate Manager.</summary>
+  
    * ...
- * Execute the "S3TemaplateEngine.json" in CloudFormation
+</details>
+<details>
+  <summary>Execute the "S3TemaplateEngine.json" in CloudFormation.</summary>
+
    * Cretae an AWS account or sign in into an existing one
    * In the AWS console, make sure you are on target region (**S3TemplateEngine is currently only working within a single region**)
    * go to "CloudFormation"
@@ -43,7 +54,10 @@ All you have to do is follow the installation paragraph, and you can write your 
      * Click "Next"
      * Check "I acknowledge that AWS CloudFormation might create IAM resources with custom names."
      * Click "Create Stack"
- * Connect your Route53 domain to the CloundFront that was created.
+</details>
+<details>
+  <summary>Connect your Route53 domain to the CloundFront that was created.</summary>
+  
    * In the AWS console, open Route53
    * Navigate to your hosted zone
    * Generate record "empty" "A"
@@ -52,12 +66,16 @@ All you have to do is follow the installation paragraph, and you can write your 
      * choose "A" as record type 
      * Check "Alias" and choose "Alias to CloudFront distribution"
      * Choose the distribution that was created earlier (by CloudFormation)
-   * Click "Add anothe record" and repeat the same for "empty" "AAAA"
-   * Click "Add anothe record" and repeat the same for "www" "A"
-   * Click "Add anothe record" and repeat the same for "www" "AAAA"
+   * Click "Add another record" and repeat the same for "empty" "AAAA"
+   * Click "Add another record" and repeat the same for "www" "A"
+   * Click "Add another record" and repeat the same for "www" "AAAA"
    * Click on Create records
- * Delete the S3 bucket you created in the second step.
+</details>
+<details>
+  <summary>Delete the S3 bucket you created in the second step.</summary>
+  
    * ...
+</details>
 
 ## Useage<a name="Useage"></a>
 Just put your template (usual website files, html with the additional commands shown below) in the "prod-website-code-\<your page name\>" s3 bucket. The system will behave as follows:
@@ -78,26 +96,24 @@ Just put your template (usual website files, html with the additional commands s
 
 ## Commands<a name="Commands"></a>
 Inside the files you put into "website/" and "part/", you can use the following tags:
-### \<part\>
-
-**Action**
-
+<details>
+  <summary> &lt;part&gt; - Reusing code from other files</summary>
+ 
+### Action
 Replaces the command with the content from another file. This is handy, if you want to reuse HTML headers or navigation.
-
-**Syntax**
-
+### Syntax
 ```html
 <part>*name*</part>
 ```
 Whereas *name* is a filename or path/filename inside the "part/" directory.
-
-**Example**
-
+### Example
 ```html
     <head>
         <part>head.part</part>
     </head>
 ```
+</details>
+
 
 ## Installation of optional Webiny extension<a name="InstallationWebiny"></a>
 ...
