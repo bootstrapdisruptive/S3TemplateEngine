@@ -146,7 +146,7 @@ Whereas *name* is a filename or path/filename inside the "part/" directory.
 ## Optional: Webiny integration<a name="Webiny"></a>
 
 ### Concept of optional Webiny extension<a name="ConceptWebiny"></a>
-S3TemplateEngine supports Webiny as an editors interface. Webiny, an open source serverless CMS ranging from a free version up to enterprise grade, also uses serverless technologies from AWS. We integrate it without any code change in Webiny, by accessing the published items on database level. So you it goes with a vanilla installation as well as with a highly cusomized one.  
+S3TemplateEngine supports Webiny as an editors interface. Webiny ( https://www.webiny.com/ ), an open source serverless CMS ranging from a free version up to enterprise grade, also uses serverless technologies from AWS. We integrate it without any code change in Webiny, by accessing the published items on database level. So you it goes with a vanilla installation as well as with a highly cusomized one.  
 
 All you have to do is to follow the installation paragraph, and you can use your Webiny generated content in your HTML-based templates.
 
