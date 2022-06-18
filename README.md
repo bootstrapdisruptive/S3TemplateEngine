@@ -32,7 +32,7 @@ All you have to do is follow the installation paragraph, and you can write your 
 <details>
   <summary>Download the github repository.</summary>
 
-Use your preferred way to pull the project, or (if you are not that experienced with git), doe it manually:
+Use your preferred way to pull the project, or (if you are not that experienced with git), do it manually:
 
    * Go to the project github page ( https://github.com/HOKComics/S3TemplateEngine )
 
@@ -153,7 +153,51 @@ All you have to do is to follow the installation paragraph, and you can use your
 ![Architecture_with_Webiny](https://user-images.githubusercontent.com/100029932/174443536-7af050de-eea7-4456-81aa-a173863b6ec9.png)
 
 ### Installation of optional Webiny extension<a name="InstallationWebiny"></a>
-...
+<details>
+  <summary>Intall S3TemplateEngine.</summary>
+
+    Install S3TemplateEngine, as described th the [Installation](#Installation) paragraph
+</details>
+<details>
+  <summary>Download the github repository.</summary>
+    If you pulled the project in the S3TemplateEngine installation: fine, else do it manually:
+
+   * Go to the project github page ( https://github.com/HOKComics/S3TemplateEngine )
+
+   * Right Click on "S3TemplateEngineWebiny.json" and choose "save link as"
+   * Download the file ( __Hint: this file is refered as "*S3TemaplateEngineWebiny.json*" later on__ )
+   
+   * Click on "s3Webiny"   
+   * Right Click on the file inside and choose "save link as"
+   * Download the file ( __Hint: this file is refered as "* files inside the s3Webiny folder*" later on__ )
+
+</details>
+<details>
+  <summary>Create an S3 bucket and upload the content of the folder "s3" (multiple zip files) into it.</summary>
+  
+   * Navigate to your S3 console. At the time this document was created, the link is https://s3.console.aws.amazon.com/s3/buckets 
+   * Choose your region in the top right of the window.
+   * Click on "Create bucket"
+   * Enter a name for your bucket, like "mywebsite-temp" ( __Hint: this name is refered as "*S3LambdaBucket*" later on__ )
+   * Click on "Create bucket"
+   * Click on the "*S3LambdaBucket*" to open it
+   * Click on Upload
+   * Click on "Add files" and choose the files inside the "s3" folder you downloaded from GitHub earlier ( __Hint: just the files, *NOT* the folder__ )
+   * Click on Upload
+  
+</details>
+
+<details>
+  <summary>Delete the S3 bucket you created in the second step.</summary>
+  
+   * Navigate to your S3 console. At the time this document was created, the link is https://s3.console.aws.amazon.com/s3/buckets 
+   * Click on the radiob utton in front of the "*S3LambdaBucket*" you created in the second step of this manual, to select it
+   * Click on "Empty"
+   * Write "permanently delete" in the verification tetx field and click "Empty"
+   * Click on "Exit"
+   * Click on "Delete"
+   * Write the name of your "*S3LambdaBucket*" in the verification tetx field and click "Delete bucket"
+</details>
 
 ### Commands of optional Webiny extension<a name="CommandsWebiny"></a>
 Inside the files you put into "website/" and "part/", you can use the following tags:
