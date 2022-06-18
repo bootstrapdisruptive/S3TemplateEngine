@@ -49,7 +49,7 @@ All you have to do is follow the installation paragraph, and you can write your 
 <details>
   <summary>Connect your domain in AWS Route53 and create an SSL certificate with the AWS Certificate Manager.</summary>
   
-   * ...
+   * This part is highly individual and not directly connected to the S3TemplateEngine project. To learn about this topic, refer to the AWS documentation ( https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring.html )
 </details>
 <details>
   <summary>Execute the "S3TemaplateEngine.json" in CloudFormation.</summary>
