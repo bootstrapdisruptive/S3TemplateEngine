@@ -8,9 +8,9 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 4. [Useage](#Useage)
 5. [Commands](#Commands)
 6. [Optional: Webiny extension](#Webiny)
-  a. [Concept of Webiny extension](#ConceptWebiny)
-  b. [Installation of optional Webiny extension](#InstallationWebiny)
-  c. [Commands of optional Webiny extension](#CommandsWebiny)
+    1. [Concept of optional Webiny extension](#ConceptWebiny)
+    2. [Installation of optional Webiny extension](#InstallationWebiny)
+    3. [Commands of optional Webiny extension](#CommandsWebiny)
 
 ## Motivation<a name="Motivation"></a>
 AWS S3 and AWS Cloudfront offer a great platform to publish websites and web apps at a low cost. However, you need to create static HTML files elsewhere, and getting everything up and running can be a pain without a decent CMS.
@@ -25,6 +25,8 @@ AWS S3 and AWS Cloudfront offer a great platform to publish websites and web app
 S3TemplateEngine uses serverless technologies (S3, Lambda, DynamoDB, Cloudformation) to provide a straightforward but powerful template language. 
 
 All you have to do is follow the installation paragraph, and you can write your HTML-based templates, put them into a specific S3 bucket and see the magic happen.
+
+![Architecture](https://user-images.githubusercontent.com/100029932/174443152-b16c98fc-f2f2-420e-9f5b-a6ea7a861acd.png)
 
 ## Installation<a name="Installation"></a>
 <details>
@@ -143,8 +145,12 @@ Whereas *name* is a filename or path/filename inside the "part/" directory.
 
 ## Optional: Webiny integration<a name="Webiny"></a>
 
-### Concept of Webiny extension<a name="ConceptWebiny"></a>
-...
+### Concept of optional Webiny extension<a name="ConceptWebiny"></a>
+S3TemplateEngine supports Webiny as an editors interface. Webiny, an open source serverless CMS ranging from a free version up to enterprise grade, also uses serverless technologies from AWS. We integrate it without any code change in Webiny, by accessing the published items on database level. So you it goes with a vanilla installation as well as with a highly cusomized one.  
+
+All you have to do is to follow the installation paragraph, and you can use your Webiny generated content in your HTML-based templates.
+
+![Architecture_with_Webiny](https://user-images.githubusercontent.com/100029932/174443536-7af050de-eea7-4456-81aa-a173863b6ec9.png)
 
 ### Installation of optional Webiny extension<a name="InstallationWebiny"></a>
 ...
