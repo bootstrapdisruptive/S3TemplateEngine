@@ -35,7 +35,16 @@ All you have to do is follow the installation paragraph, and you can write your 
 <details>
   <summary>Create an S3 bucket and upload the content of the folder "s3" (multiple zip files) into it.</summary>
   
-   * ...
+   * Navigate to your S3 console. At the time this document was created, the link is https://s3.console.aws.amazon.com/s3/buckets 
+   * Choose your region in the top right of the window.
+   * Click on "Create bucket"
+   * Enter a name for your bucket, like "mywebsite-temp" ( __Hint: this name is refered as "*S3LambdaBucket*" later on__ )
+   * Click on "Create bucket"
+   * Click on the "*S3LambdaBucket*" to open it
+   * Click on Upload
+   * Click on "Add files" and choose the files inside the "s3" folder you downloaded from GitHub earlier ( __Hint: just the files, *NOT* the folder__ )
+   * Click on Upload
+  
 </details>
 <details>
   <summary>Connect your domain in AWS Route53 and create an SSL certificate with the AWS Certificate Manager.</summary>
@@ -76,7 +85,13 @@ All you have to do is follow the installation paragraph, and you can write your 
 <details>
   <summary>Delete the S3 bucket you created in the second step.</summary>
   
-   * ...
+   * Navigate to your S3 console. At the time this document was created, the link is https://s3.console.aws.amazon.com/s3/buckets 
+   * Click on the radiob utton in front of the "*S3LambdaBucket*" you created in the second step of this manual, to select it
+   * Click on "Empty"
+   * Write "permanently delete" in the verification tetx field and click "Empty"
+   * Click on "Exit"
+   * Click on "Delete"
+   * Write the name of your "*S3LambdaBucket*" in the verification tetx field and click "Delete bucket"
 </details>
 
 ## Useage<a name="Useage"></a>
@@ -168,6 +183,7 @@ Whereas *json* is a json object with the following attributes:
 <dbmulti>{"table":"PROD_Articles","filter":[{"forWebsite":{"BOOL":true}}],"template":"<a href='artikeldetail-<dbitem>id</dbitem>.html'><h2><dbitem>headline</dbitem></h2><div class='content'><dbitem>readingtime</dbitem>&nbsp;min</div></a>"}</dbmulti>
 ```
 </details>
+<details>
   <summary> &lt;dbmultifile&gt; - Create a file for each Webiny item matching a filter</summary>
 
 ### Action
@@ -209,7 +225,6 @@ Whereas *fieldname* is the name of an attribute (column) from the DynamoDB.
 <dbitem>headline</dbitem>
 ```
 </details>
-<details>
 <details>
   <summary> &lt;fileattribute&gt; - Inserts Webiny items values, based on dbmultifile loop created files</summary>
  
