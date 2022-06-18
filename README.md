@@ -186,7 +186,21 @@ All you have to do is to follow the installation paragraph, and you can use your
    * Click on Upload
   
 </details>
+<details>
+  <summary>Execute the "S3TemaplateEngineWebiny.json" in CloudFormation.</summary>
 
+   * Cretae an AWS account or sign in into an existing one
+   * In the AWS console, make sure you are on target region (**S3TemplateEngine is currently only working within a single region**)
+   * go to "CloudFormation"
+     * Click on "Create Stack"
+     * Select "Template is ready" and "Upload a template file"
+     * Click on "choose file" and select "S3TemaplateEngineWebiny.json"
+     * Click on "Next"
+     * Fill out Stack Name and Parameters
+     * Click "Next"
+     * Check "I acknowledge that AWS CloudFormation might create IAM resources with custom names."
+     * Click "Create Stack"
+</details>
 <details>
   <summary>Delete the S3 bucket you created in the second step.</summary>
   
