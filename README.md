@@ -7,8 +7,10 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 3. [Installation](#Installation)
 4. [Useage](#Useage)
 5. [Commands](#Commands)
-6. [Installation of optional Webiny extension](#InstallationWebiny)
-7. [Commands of optional Webiny extension](#CommandsWebiny)
+6. [Optional: Webiny extension](#Webiny)
+  a. [Concept of Webiny extension](#ConceptWebiny)
+  b. [Installation of optional Webiny extension](#InstallationWebiny)
+  c. [Commands of optional Webiny extension](#CommandsWebiny)
 
 ## Motivation<a name="Motivation"></a>
 AWS S3 and AWS Cloudfront offer a great platform to publish websites and web apps at a low cost. However, you need to create static HTML files elsewhere, and getting everything up and running can be a pain without a decent CMS.
@@ -114,39 +116,39 @@ Whereas *name* is a filename or path/filename inside the "part/" directory.
 ```
 </details>
 
+## Optional: Webiny integration<a name="Webiny"></a>
 
-## Installation of optional Webiny extension<a name="InstallationWebiny"></a>
+### Concept of Webiny extension<a name="ConceptWebiny"></a>
 ...
 
-## Commands of optional Webiny extension<a name="CommandsWebiny"></a>
-### \<dbpart\>
+### Installation of optional Webiny extension<a name="InstallationWebiny"></a>
+...
 
-**Action**
+### Commands of optional Webiny extension<a name="CommandsWebiny"></a>
+Inside the files you put into "website/" and "part/", you can use the following tags:
+<details>
+  <summary> &lt;dbpart&gt; - Inserting code or content maintained in Webiny</summary>
+ 
+### Action
 Replaces the command with the content from an Webiny maintained element. This is handy, if you want to give an editor access to static elements like a privacy statement or a tracking tag.
-
-**Syntax**
-
+### Syntax
 ```html
 <dbpart>*name*</dbpart>
 ```
 Whereas *name* is the "content_id" of a Webiny "Static Contents" or "Static Code Contents" element.
-
-**Example**
-
+### Example
 ```html
     <body>
         <dbpart>impressum</dbpart>
     </body>
 ```
-
-### \<dbmulti\>
-
-**Action**
-
+</details>
+<details>
+  <summary> &lt;dbmulti&gt; - Inserting multiple Webiny items in one file</summary>
+ 
+### Action
 Replaces the command with a defined HTML template multiple times. Exactly once for each entry in the published Webiny content, matching the filter criteria. Handy for cretaing an overview page of articles.
-
-**Syntax**
-
+### Syntax
 ```html
 <dbmulti>*json*</dbmulti>
 ```
@@ -161,37 +163,16 @@ Whereas *json* is a json object with the following attributes:
   "template":"an HTML template, that will probably contain <dbitem> elements"
 }
 ```
-
-**Example**
-
+### Example
 ```html
 <dbmulti>{"table":"PROD_Articles","filter":[{"forWebsite":{"BOOL":true}}],"template":"<a href='artikeldetail-<dbitem>id</dbitem>.html'><h2><dbitem>headline</dbitem></h2><div class='content'><dbitem>readingtime</dbitem>&nbsp;min</div></a>"}</dbmulti>
 ```
-### \<dbitem\>
-**Action**
+</details>
+  <summary> &lt;dbmultifile&gt; - Create a file for each Webiny item matching a filter</summary>
 
-Inside a \<dbmulti\>-command: Replaces the \<dbitem\>-command with the content of a Webiny field of the current element.
-
-**Syntax**
-
-```html
-<dbitem>*fieldname*</dbitem>
-```
-Whereas *fieldname* is the name of an attribute (column) from the DynamoDB.
-
-**Example**
-
-```html
-<dbitem>headline</dbitem>
-```
-
-### \<dbmultifile\>
-**Action**
-
+### Action
 Creates multiple files out of one template file, by using one unqiue database attribute as suffix to the created filenames. Handy for generating individual pages for articles.
-
-**Syntax**
-
+### Syntax
 Must be first line of the tmeplate frile (even before \<!Doctype html\>)
 ```html
 <dbmultifile>*json*</dbmultifile>
@@ -207,27 +188,40 @@ Whereas *json* is a json object with the following attributes:
   ]
 }
 ```
-
-**Example**
-
+Whereas *fieldname* is the name of an attribute (column) from the DynamoDB.
+### Example
 ```html
 <dbmultifile>{"table":"PROD_Articles","filenamesuffix":"id","filter":[{"forWebsite":{"BOOL":true}}]}</dbmultifile>
 ```
-### \<fileattribute\>
-
-**Action**
-
+</details>
+<details>
+  <summary> &lt;dbitem&gt; - Inserts Webiny items values (used inside a dbmulti or dbmultifile loop)</summary>
+ 
+### Action
+Inside a \<dbmulti\>-command or \<dbmultifile\>-command: Replaces the \<dbitem\>-command with the content of a Webiny field of the current element.
+### Syntax
+```html
+<dbitem>*fieldname*</dbitem>
+```
+Whereas *fieldname* is the name of an attribute (column) from the DynamoDB.
+### Example
+```html
+<dbitem>headline</dbitem>
+```
+</details>
+<details>
+<details>
+  <summary> &lt;fileattribute&gt; - Inserts Webiny items values, based on dbmultifile loop created files</summary>
+ 
+### Action
 Inside a \<dbmultifile\>-command: Replaces the \<fileattribute\>-command with the current filename. Handy for generation of canonical tags.
-
-**Syntax**
-
+### Syntax
 ```html
 <fileattribute>filename</fileattribute>
 ```
 Currently filename is the only command available.
-
-**Example**
-
+### Example
 ```html
 <fileattribute>filename</fileattribute>
 ```
+</details>
