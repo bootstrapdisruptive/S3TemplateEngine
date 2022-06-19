@@ -201,7 +201,7 @@ All you have to do is to follow the installation paragraph, and you can use your
      * Select "Template is ready" and "Upload a template file"
      * Click on "choose file" and select "S3TemaplateEngineWebiny.json"
      * Click on "Next"
-     * Fill out Stack Name and Parameters
+     * Fill out Stack Name and Parameters **Be aware, that the parameters Environment and WebsiteName have to be exactly the same parameters you used when installing S3TemaplateEngine**
      * Click "Next"
      * Check "I acknowledge that AWS CloudFormation might create IAM resources with custom names."
      * Click "Create Stack"
