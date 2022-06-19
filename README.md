@@ -168,6 +168,19 @@ All you have to do is to follow the installation paragraph, and you can use your
 
    * Log in and create the models you need in the Webiny backend. The names of these models will be needed for the following steps.
    * **Hint: If you want to add or remove a model after installation, you can do so by manually editing the of the "relevant_webiny_models" environment variable of the "<ENV>_HOK_transfer_published_item" lambda function.**
+   * In addition, create the following two models:
+     * model name "staticCodeContent", containing
+       * a text field called "contentId" with the restriction "unique"
+       * a text field "content"
+         * This model will be used for specific conetent you only have one instance of, that is source code, like a tracking pixel   
+         * It will be available via it's "contentId", if you want to hand these over to editors, I recommend prepareing the available contentId values as predefined value
+     * model name "staticContent", containing
+       * a text field called "contentId" with the restriction "unique"
+       * a rich text field "content"
+         * This model will be used for specific conetent you only have one instance of, that is source code, like a tracking pixel   
+         * It will be available via it's "contentId", if you want to hand these over to editors, I recommend prepareing the available contentId values as predefined value
+
+       * This one will be used for specific conetent you only have one instance of, like the "about us" page
 </details>
 <details>
   <summary>Download the github repository.</summary>
