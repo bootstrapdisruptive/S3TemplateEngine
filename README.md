@@ -156,7 +156,12 @@ All you have to do is to follow the installation paragraph, and you can use your
 <details>
   <summary>Intall S3TemplateEngine.</summary>
 
-    Install S3TemplateEngine, as described th the [Installation](#Installation) paragraph
+    Install S3TemplateEngine, as described in the [Installation](#Installation) paragraph.
+</details>
+<details>
+  <summary>Intall Webiny.</summary>
+
+    Install Webiny, as described in the Webiny documentation. ( https://www.webiny.com/docs/get-started/install-webiny )
 </details>
 <details>
   <summary>Download the github repository.</summary>
@@ -173,7 +178,7 @@ All you have to do is to follow the installation paragraph, and you can use your
 
 </details>
 <details>
-  <summary>Create an S3 bucket and upload the content of the folder "s3" (multiple zip files) into it.</summary>
+  <summary>Create an S3 bucket and upload the content of the folder "s3Webiny" (multiple zip files) into it.</summary>
   
    * Navigate to your S3 console. At the time this document was created, the link is https://s3.console.aws.amazon.com/s3/buckets 
    * Choose your region in the top right of the window.
@@ -182,7 +187,7 @@ All you have to do is to follow the installation paragraph, and you can use your
    * Click on "Create bucket"
    * Click on the "*S3LambdaBucket*" to open it
    * Click on Upload
-   * Click on "Add files" and choose the files inside the "s3" folder you downloaded from GitHub earlier ( __Hint: just the files, *NOT* the folder__ )
+   * Click on "Add files" and choose the files inside the "s3Webiny" folder you downloaded from GitHub earlier ( __Hint: just the files, *NOT* the folder__ )
    * Click on Upload
   
 </details>
