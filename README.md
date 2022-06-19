@@ -156,17 +156,18 @@ All you have to do is to follow the installation paragraph, and you can use your
 <details>
   <summary>Intall S3TemplateEngine.</summary>
 
-    Install S3TemplateEngine, as described in the [Installation](#Installation) paragraph.
+   * Install S3TemplateEngine, as described in the [Installation](#Installation) paragraph.
 </details>
 <details>
   <summary>Intall Webiny.</summary>
 
-    Install Webiny, as described in the Webiny documentation. ( https://www.webiny.com/docs/get-started/install-webiny )
+   * Install Webiny, as described in the Webiny documentation. ( https://www.webiny.com/docs/get-started/install-webiny )
 </details>
 <details>
   <summary>Prepare Webiny.</summary>
 
-    Log in and create the models you need in the Webiny backend. The names of these models will be needed for the following steps. **Hint: If you want to add or remove a model after installation, you can do so by manually editing the of the "relevant_webiny_models" environment variable of the "<ENV>_HOK_transfer_published_item" lambda function.**
+   * Log in and create the models you need in the Webiny backend. The names of these models will be needed for the following steps.
+   * **Hint: If you want to add or remove a model after installation, you can do so by manually editing the of the "relevant_webiny_models" environment variable of the "<ENV>_HOK_transfer_published_item" lambda function.**
 </details>
 <details>
   <summary>Download the github repository.</summary>
