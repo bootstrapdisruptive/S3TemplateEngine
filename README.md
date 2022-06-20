@@ -4,10 +4,11 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 ## Table of Contents
 1. [Motivation](#Motivation)
 2. [Concept](#Concept)
-3. [Installation](#Installation)
-4. [Useage](#Useage)
-5. [Commands](#Commands)
-6. [Optional: Webiny extension](#Webiny)
+3. [Support] (#Support)
+4. [Installation](#Installation)
+5. [Useage](#Useage)
+6. [Commands](#Commands)
+7. [Optional: Webiny extension](#Webiny)
     1. [Concept of optional Webiny extension](#ConceptWebiny)
     2. [Installation of optional Webiny extension](#InstallationWebiny)
     3. [Commands of optional Webiny extension](#CommandsWebiny)
@@ -20,6 +21,10 @@ AWS S3 and AWS Cloudfront offer a great platform to publish websites and web app
 * Use a CMS for updating your content
 * Automatically create pages dynamically (like an individual page for each article you put in a system, rather than an SEO unfriendly AJAX load of content on a generic page)
 * Have a pipeline that optimizes/minifies your code output
+
+## Support<a name="Support"></a>
+If you want to support this project by buying me a tea (I'm not into coffee ;-) ), feel free: https://ko-fi.com/hokcomics
+If you need support, found a bug or want to donate a pull request, feel free to use the contact me via github.
 
 ## Concept<a name="Concept"></a>
 S3TemplateEngine uses serverless technologies (S3, Lambda, DynamoDB, Cloudformation) to provide a straightforward but powerful template language. 
