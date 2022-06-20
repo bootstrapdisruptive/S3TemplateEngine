@@ -26,7 +26,7 @@ AWS S3 and AWS Cloudfront offer a great platform to publish websites and web app
 If you want to support this project by buying me a tea (I'm not into coffee ;-) ), feel free: https://ko-fi.com/hokcomics
 [![61e11d430afb112ea33c3aa5_Button-1](https://user-images.githubusercontent.com/100029932/174646264-edec5c8c-420b-4e54-88a7-a8dd9871ff1e.png)](https://ko-fi.com/hokcomics)
 
-If you need support, found a bug or want to donate a pull request, feel free to use the contact me via github.
+If you need support, found a bug or want to donate a pull request, feel free to contact me via github.
 
 ## Concept<a name="Concept"></a>
 S3TemplateEngine uses serverless technologies (S3, Lambda, DynamoDB, Cloudformation) to provide a straightforward but powerful template language. 
