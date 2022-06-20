@@ -24,6 +24,8 @@ AWS S3 and AWS Cloudfront offer a great platform to publish websites and web app
 
 ## Support<a name="Support"></a>
 If you want to support this project by buying me a tea (I'm not into coffee ;-) ), feel free: https://ko-fi.com/hokcomics
+![61e11d430afb112ea33c3aa5_Button-1](https://ko-fi.com/hokcomics)
+
 If you need support, found a bug or want to donate a pull request, feel free to use the contact me via github.
 
 ## Concept<a name="Concept"></a>
