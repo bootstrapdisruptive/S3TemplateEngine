@@ -11,9 +11,9 @@
             "Type": "String",
             "AllowedPattern": "[-a-zA-Z0-9+&@#/%?=~_|!:,.;]*[-a-zA-Z0-9+&@#/%=~_|]",
             "ConstraintDescription": "website is not a valid URL",
-            "Description": "website base URl like 'example.com' - DO NOT ENTER 'www.example-com"
+            "Description": "website base URl like 'example.com' - DO NOT ENTER 'www.example.com"
         },
-        "EnvironmentParameter": {
+        "Environment": {
             "Type": "String",
             "Default": "DEV",
             "AllowedValues": [
@@ -23,7 +23,7 @@
             ],
             "Description": "Choose environment type."
         },
-        "WebCertificateARNParameter": {
+        "WebCertificateARN": {
             "Type": "String",
             "Default": "",
             "Description": "Enter ARN of AWS Certificate Manager certificate for your Website."
@@ -37,7 +37,7 @@
         "isProduction": {
             "Fn::Equals": [
                 {
-                    "Ref": "EnvironmentParameter"
+                    "Ref": "Environment"
                 },
                 "PROD"
             ]
@@ -190,7 +190,7 @@
                                     "Environment",
                                     "PlatformName",
                                     {
-                                        "Ref": "EnvironmentParameter"
+                                        "Ref": "Environment"
                                     }
                                 ]
                             },
@@ -205,7 +205,7 @@
                     {
                         "Key": "env",
                         "Value": {
-                            "Ref": "EnvironmentParameter"
+                            "Ref": "Environment"
                         }
                     },
                     {
@@ -432,7 +432,7 @@
                                     "Environment",
                                     "PlatformName",
                                     {
-                                        "Ref": "EnvironmentParameter"
+                                        "Ref": "Environment"
                                     }
                                 ]
                             },
@@ -451,7 +451,7 @@
                     {
                         "Key": "env",
                         "Value": {
-                            "Ref": "EnvironmentParameter"
+                            "Ref": "Environment"
                         }
                     },
                     {
@@ -490,7 +490,7 @@
                         "_",
                         [
                             {
-                                "Ref": "EnvironmentParameter"
+                                "Ref": "Environment"
                             },
                             "HOK_move_file"
                         ]
@@ -509,7 +509,7 @@
                     {
                         "Key": "env",
                         "Value": {
-                            "Ref": "EnvironmentParameter"
+                            "Ref": "Environment"
                         }
                     },
                     {
@@ -551,7 +551,7 @@
                                             "Environment",
                                             "PlatformName",
                                             {
-                                                "Ref": "EnvironmentParameter"
+                                                "Ref": "Environment"
                                             }
                                         ]
                                     },
@@ -573,7 +573,7 @@
                                 "_",
                                 [
                                     {
-                                        "Ref": "EnvironmentParameter"
+                                        "Ref": "Environment"
                                     },
                                     "WebsitePartsFromWebiny",
                                     {
@@ -589,7 +589,7 @@
                         "_",
                         [
                             {
-                                "Ref": "EnvironmentParameter"
+                                "Ref": "Environment"
                             },
                             "HOK_render_html_files"
                         ]
@@ -608,7 +608,7 @@
                     {
                         "Key": "env",
                         "Value": {
-                            "Ref": "EnvironmentParameter"
+                            "Ref": "Environment"
                         }
                     },
                     {
@@ -634,7 +634,7 @@
                         "_",
                         [
                             {
-                                "Ref": "EnvironmentParameter"
+                                "Ref": "Environment"
                             },
                             "lambda_dynamoDB_S3"
                         ]
@@ -701,7 +701,7 @@
                                     "Environment",
                                     "PlatformName",
                                     {
-                                        "Ref": "EnvironmentParameter"
+                                        "Ref": "Environment"
                                     }
                                 ]
                             },
@@ -743,7 +743,7 @@
                                     "Environment",
                                     "PlatformName",
                                     {
-                                        "Ref": "EnvironmentParameter"
+                                        "Ref": "Environment"
                                     }
                                 ]
                             },
@@ -791,7 +791,7 @@
                         "_",
                         [
                             {
-                                "Ref": "EnvironmentParameter"
+                                "Ref": "Environment"
                             },
                             "WebsiteHtmlPartConnections",
                             {
@@ -804,7 +804,7 @@
                     {
                         "Key": "env",
                         "Value": {
-                            "Ref": "EnvironmentParameter"
+                            "Ref": "Environment"
                         }
                     },
                     {
@@ -841,7 +841,7 @@
                                                     "Environment",
                                                     "PlatformName",
                                                     {
-                                                        "Ref": "EnvironmentParameter"
+                                                        "Ref": "Environment"
                                                     }
                                                 ]
                                             },
@@ -877,7 +877,7 @@
                                                     "Environment",
                                                     "PlatformName",
                                                     {
-                                                        "Ref": "EnvironmentParameter"
+                                                        "Ref": "Environment"
                                                     }
                                                 ]
                                             },
@@ -906,7 +906,7 @@
                                     "Ref": "WebsiteUrl"
                                 },
                                 {
-                                    "Ref": "EnvironmentParameter"
+                                    "Ref": "Environment"
                                 },
                                 "Website"
                             ]
@@ -972,7 +972,7 @@
                     "PriceClass": "PriceClass_100",
                     "ViewerCertificate": {
                         "AcmCertificateArn": {
-                            "Ref": "WebCertificateARNParameter"
+                            "Ref": "WebCertificateARN"
                         },
                         "MinimumProtocolVersion": "TLSv1",
                         "SslSupportMethod": "sni-only"
@@ -982,7 +982,7 @@
                     {
                         "Key": "env",
                         "Value": {
-                            "Ref": "EnvironmentParameter"
+                            "Ref": "Environment"
                         }
                     },
                     {
@@ -1011,7 +1011,7 @@
                                     "Ref": "WebsiteUrl"
                                 },
                                 {
-                                    "Ref": "EnvironmentParameter"
+                                    "Ref": "Environment"
                                 },
                                 "Website"
                             ]
