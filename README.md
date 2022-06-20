@@ -4,7 +4,7 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 ## Table of Contents
 1. [Motivation](#Motivation)
 2. [Concept](#Concept)
-3. [Support] (#Support)
+3. [Support](#Support)
 4. [Installation](#Installation)
 5. [Useage](#Useage)
 6. [Commands](#Commands)
