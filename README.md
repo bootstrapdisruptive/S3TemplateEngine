@@ -319,7 +319,9 @@ Whereas *json* is a json object with the following attributes:
   ]
 }
 ```
-Whereas *fieldname* is the name of an attribute (column) from the DynamoDB.
+Whereas *fieldname* is the name of an attribute (column) from the DynamoDB, and
+"table" is in the default setting "PROD_WebsiteContentFromWebiny"
+
 ### Example
 ```html
 <dbmultifile>{"table":"PROD_Articles","filenamesuffix":"id","filter":[{"forWebsite":{"BOOL":true}}]}</dbmultifile>
