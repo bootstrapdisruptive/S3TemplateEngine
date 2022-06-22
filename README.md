@@ -248,9 +248,6 @@ All you have to do is to follow the installation paragraph, and you can use your
    * Navigate to your DynamoDB console. At the time this document was created, the link is https://console.aws.amazon.com/dynamodbv2/home
    * Make sure you are in the correct region
    * Clik on "tables" 
-   * Click on your Webiny table (usually it's named "<environment>_WebsitePartsFromWebiny_<your page name>")
-   * In “DynamoDB stream details” click on “Create trigger”
-   * Choose “PROD_HOK_render_html_files” (or “DEV_HOK_render_html_files” or similar, depending on your enviroment). Choose a Batch size of 1 and click “Create trigger”
    * Click on your Webiny table (usually it's named "<environment>_PROD_WebsiteContentFromWebiny_<your page name>")
    * In “DynamoDB stream details” click on “Create trigger”
    * Choose “PROD_HOK_render_html_files” (or “DEV_HOK_render_html_files” or similar, depending on your enviroment). Choose a Batch size of 1 and click “Create trigger”
