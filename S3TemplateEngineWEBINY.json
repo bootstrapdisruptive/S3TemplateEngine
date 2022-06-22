@@ -300,14 +300,14 @@
             "Properties": {
                 "AttributeDefinitions": [
                     {
-                        "AttributeName": "content_id",
+                        "AttributeName": "contentid",
                         "AttributeType": "S"
                     }
                 ],
                 "BillingMode": "PAY_PER_REQUEST",
                 "KeySchema": [
                     {
-                        "AttributeName": "content_id",
+                        "AttributeName": "contentid",
                         "KeyType": "HASH"
                     }
                 ],
