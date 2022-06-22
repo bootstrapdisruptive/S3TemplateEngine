@@ -252,7 +252,20 @@ All you have to do is to follow the installation paragraph, and you can use your
    * In “DynamoDB stream details” click on “Create trigger”
    * Choose “PROD_HOK_render_html_files” (or “DEV_HOK_render_html_files” or similar, depending on your enviroment). Choose a Batch size of 1 and click “Create trigger”
 
-</details>    
+</details>  
+
+<details>
+  <summary>Make your content table known to the render lambda.</summary>
+    
+   * Navigate to your AWS Lambda console. At the time this document was created, the link is https://console.aws.amazon.com/lambda 
+   * Search for "render" and click on the function "<environment>_HOK_render_html_files"
+   * Go to the "Configuraiton" tab and choose "Environment variables"
+   * Click on "edit"
+   * At the key "content_table", enter the name of your according DynamoDB table, usuall "PROD_WebsiteContentFromWebiny" (or "DEV_content_table", or "STAGE_content_table")
+   * Clik on "tables" 
+   * Click on "save"
+
+</details>      
 <details>
   <summary>Delete the S3 bucket you created in the second step.</summary>
   
