@@ -276,7 +276,7 @@ Replaces the command with the content from an Webiny maintained element. This is
 ```html
 <dbpart>*name*</dbpart>
 ```
-Whereas *name* is the "content_id" of a Webiny "Static Contents" or "Static Code Contents" element.
+Whereas *name* is the "contentid" of a Webiny "Static Contents" or "Static Code Contents" element.
 ### Example
 ```html
     <body>
