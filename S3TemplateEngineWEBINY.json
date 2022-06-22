@@ -311,9 +311,6 @@
                         "KeyType": "HASH"
                     }
                 ],
-                "StreamSpecification":{
-                    "StreamViewType" : "NEW_AND_OLD_IMAGES"
-                  },
                 "TableClass": "STANDARD",
                 "TableName": {
                     "Fn::Join": [
