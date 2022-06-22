@@ -555,7 +555,7 @@
                                             }
                                         ]
                                     },
-                                    "website",
+                                    "website-code",
                                     {
                                         "Ref": "WebsiteName"
                                     }
