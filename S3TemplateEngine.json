@@ -568,17 +568,14 @@
                         "html_part_element_table": {
                             "Ref": "DDBWebsiteHtmlConnections"
                         },
-                        "website_element_table": {
+                        "content_table": {
                             "Fn::Join": [
                                 "_",
                                 [
                                     {
                                         "Ref": "Environment"
                                     },
-                                    "WebsitePartsFromWebiny",
-                                    {
-                                        "Ref": "WebsiteName"
-                                    }
+                                    "WebsiteContentFromWebiny"
                                 ]
                             ]
                         }

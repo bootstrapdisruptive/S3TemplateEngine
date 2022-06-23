@@ -185,9 +185,6 @@
                         },
                         "relevant_webiny_models": {
                             "Ref": "WebinyModels"
-                        },
-                        "destination_table_staticContent": {
-                            "Ref": "DDBWebsitePartsFromWebiny"
                         }
                     }
                 },
@@ -250,7 +247,11 @@
                     {
                         "AttributeName": "id",
                         "AttributeType": "S"
-                    }
+                    },
+                    {
+                        "AttributeName" : "contentid",
+                        "AttributeType": "S"
+                    }                    
                 ],
                 "BillingMode": "PAY_PER_REQUEST",
                 "KeySchema": [
@@ -259,6 +260,16 @@
                         "KeyType": "HASH"
                     }
                 ],
+                "GlobalSecondaryIndexes" : [{
+                    "IndexName" : "contentid",
+                    "KeySchema" : [ {
+                        "AttributeName" : "contentid",
+                        "KeyType" : "HASH"
+                      } ],
+                    "Projection" : { 
+                        "ProjectionType": "ALL"
+                    }
+                }],
                 "TableClass": "STANDARD",
                 "TableName": {
                     "Fn::Join": [
@@ -292,58 +303,6 @@
             "Metadata": {
                 "AWS::CloudFormation::Designer": {
                     "id": "6532d864-4d8c-40fe-b44d-bfb7fc50b00d"
-                }
-            }
-        },
-        "DDBWebsitePartsFromWebiny": {
-            "Type": "AWS::DynamoDB::Table",
-            "Properties": {
-                "AttributeDefinitions": [
-                    {
-                        "AttributeName": "contentid",
-                        "AttributeType": "S"
-                    }
-                ],
-                "BillingMode": "PAY_PER_REQUEST",
-                "KeySchema": [
-                    {
-                        "AttributeName": "contentid",
-                        "KeyType": "HASH"
-                    }
-                ],
-                "TableClass": "STANDARD",
-                "TableName": {
-                    "Fn::Join": [
-                        "_",
-                        [
-                            {
-                                "Ref": "Environment"
-                            },
-                            "WebsitePartsFromWebiny",
-                            {
-                                "Ref": "WebsiteName"
-                            }
-                        ]
-                    ]
-                },
-                "Tags": [
-                    {
-                        "Key": "env",
-                        "Value": {
-                            "Ref": "Environment"
-                        }
-                    },
-                    {
-                        "Key": "app",
-                        "Value": {
-                            "Ref": "WebsiteName"
-                        }
-                    }
-                ]
-            },
-            "Metadata": {
-                "AWS::CloudFormation::Designer": {
-                    "id": "4c82fab9-082e-4a8e-9ff1-a57bf18f7453"
                 }
             }
         }
