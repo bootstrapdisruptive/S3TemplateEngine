@@ -296,7 +296,6 @@ Replaces the command with a defined HTML template multiple times. Exactly once f
 Whereas *json* is a json object with the following attributes:
 ```json
 {
-  "table":"Name Of Dynamo DB table",
   "filter":[
     {"AttributeName":{"DynamoDBType":"AttributeContent"}},
     ...
@@ -306,7 +305,10 @@ Whereas *json* is a json object with the following attributes:
 ```
 ### Example
 ```html
-<dbmulti>{"table":"PROD_Articles","filter":[{"forWebsite":{"BOOL":true}}],"template":"<a href='artikeldetail-<dbitem>id</dbitem>.html'><h2><dbitem>headline</dbitem></h2><div class='content'><dbitem>readingtime</dbitem>&nbsp;min</div></a>"}</dbmulti>
+<dbmulti>{
+    "filter":[{"forWebsite":{"BOOL":true}}],
+    "template":"<a href='artikeldetail-<dbitem>id</dbitem>.html'><h2><dbitem>headline</dbitem></h2><div class='content'><dbitem>readingtime</dbitem>&nbsp;min</div></a>"
+}</dbmulti>
 ```
 </details>
 <details>
