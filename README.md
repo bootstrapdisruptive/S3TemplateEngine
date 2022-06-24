@@ -322,7 +322,6 @@ Must be first line of the tmeplate frile (even before \<!Doctype html\>)
 Whereas *json* is a json object with the following attributes:
 ```json
 {
-  "table":"Name Of Dynamo DB table",
   "filenamesuffix":"Dynamo DB field (muust be unique)",
   "filter":[
     {"AttributeName":{"DynamoDBType":"AttributeContent"}},
@@ -330,13 +329,11 @@ Whereas *json* is a json object with the following attributes:
   ]
 }
 ```
-Whereas *fieldname* is the name of an attribute (column) from the DynamoDB, and
-"table" is in the default setting "PROD_WebsiteContentFromWebiny"
+Whereas *fieldname* is the name of an attribute (column) from the DynamoDB
 
 ### Example
 ```html
     <dbmulti>{
-        "table":"PROD_WebsiteContentFromWebiny",
         "filter":[{"hero":{"BOOL":true}}],
         "template":"<a class='artprev' href='artikeldetail-<dbitem>id</dbitem>.html'><h2><dbitem>headline</dbitem></h2><div class='content'><img src='<dbitem>image</dbitem>'><dbitem>content</dbitem></div></a>"
     }</dbmulti>
