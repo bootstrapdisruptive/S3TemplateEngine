@@ -303,6 +303,8 @@ Whereas *json* is a json object with the following attributes:
   "template":"an HTML template, that will probably contain <dbitem> elements"
 }
 ```
+__Hint:__ You can sort entries by adding a number field named "order" to your Webiny model. After that edit your entries: smaller numbers come first, stuff with empty "order" fields are rendered at the end.
+
 ### Example
 ```html
 <dbmulti>{
