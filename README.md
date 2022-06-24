@@ -335,10 +335,12 @@ Whereas *fieldname* is the name of an attribute (column) from the DynamoDB
 
 ### Example
 ```html
-    <dbmulti>{
-        "filter":[{"hero":{"BOOL":true}}],
-        "template":"<a class='artprev' href='artikeldetail-<dbitem>id</dbitem>.html'><h2><dbitem>headline</dbitem></h2><div class='content'><img src='<dbitem>image</dbitem>'><dbitem>content</dbitem></div></a>"
-    }</dbmulti>
+<dbmultifile>{
+    "filenamesuffix":"id",
+    "filter":[
+      {"__typename":{"S":"artikel"}}
+    ]
+  }</dbmultifile>
 ```
 </details>
 <details>
