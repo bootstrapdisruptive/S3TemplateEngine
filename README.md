@@ -5,10 +5,11 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 1. [Motivation](#Motivation)
 2. [Concept](#Concept)
 3. [Support](#Support)
-4. [Installation](#Installation)
-5. [Useage](#Useage)
-6. [Commands](#Commands)
-7. [Optional: Webiny extension](#Webiny)
+4. [Known non-intuitive behaviour](#Bugs)
+5. [Installation](#Installation)
+6. [Useage](#Useage)
+7. [Commands](#Commands)
+8. [Optional: Webiny extension](#Webiny)
     1. [Concept of optional Webiny extension](#ConceptWebiny)
     2. [Installation of optional Webiny extension](#InstallationWebiny)
     3. [Commands of optional Webiny extension](#CommandsWebiny)
@@ -18,15 +19,20 @@ AWS S3 and AWS Cloudfront offer a great platform to publish websites and web app
 
 **This project is for you, if** you want to manually create HTML and benefit from low-cost serverless computing but still want to:
  * Reuse code snippets (like header or navigation)
-* Use a CMS for updating your content
-* Automatically create pages dynamically (like an individual page for each article you put in a system, rather than an SEO unfriendly AJAX load of content on a generic page)
-* Have a pipeline that optimizes/minifies your code output
+ * Use a CMS for updating your content
+ * Automatically create pages dynamically (like an individual page for each article you put in a system, rather than an SEO unfriendly AJAX load of content on a generic page)
+ * Have a pipeline that optimizes/minifies your code output
 
 ## Support<a name="Support"></a>
 If you want to support this project by buying me a tea (I'm not into coffee ;-) ), feel free: https://ko-fi.com/hokcomics
 [![61e11d430afb112ea33c3aa5_Button-1](https://user-images.githubusercontent.com/100029932/174646264-edec5c8c-420b-4e54-88a7-a8dd9871ff1e.png)](https://ko-fi.com/hokcomics)
 
 If you need support, found a bug or want to donate a pull request, feel free to contact me via github.
+
+## Known non-intuitive behaviour<a name="Bugs"></a>
+ * When you updateyour content (by changing the temnplante files or Webiny items), your changes will not instantly appear on your website URL. The reason for that is, that, if you set up everything as descibed below, your Domain routes to CloudFront, and CloudFront caches files. I recommend using your S3 bucket (https://<your environment (as enetred in cloudformation)>-website-<you website name (as enetred in cloudformation)>.s3.<your region, as choosen in AWS>.amazonaws.com/index.html) for preview and using the "invalidation" ffeature of cloudfront once you are happy with your changes.
+
+
 
 ## Concept<a name="Concept"></a>
 S3TemplateEngine uses serverless technologies (S3, Lambda, DynamoDB, Cloudformation) to provide a straightforward but powerful template language. 
