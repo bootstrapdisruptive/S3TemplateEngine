@@ -33,7 +33,6 @@ If you need support, found a bug or want to donate a pull request, feel free to 
  * When you updateyour content (by changing the temnplante files or Webiny items), **your changes will not instantly appear on your website URL**. The reason for that is, that, if you set up everything as descibed below, your Domain routes to CloudFront, and CloudFront caches files. I recommend using your S3 bucket (https://<your environment (as enetred in cloudformation)>-website-<you website name (as enetred in cloudformation)>.s3.<your region, as choosen in AWS>.amazonaws.com/index.html) for preview and using the "invalidation" feature of CloudFront (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html) once you are happy with your changes.
 
 
-
 ## Concept<a name="Concept"></a>
 S3TemplateEngine uses serverless technologies (S3, Lambda, DynamoDB, Cloudformation) to provide a straightforward but powerful template language. 
 
@@ -75,7 +74,7 @@ Use your preferred way to pull the project, or (if you are not that experienced 
   <summary>Connect your domain in AWS Route53 and create an SSL certificate with the AWS Certificate Manager ("www." and "" ).</summary>
   
    * This part is highly individual and not directly connected to the S3TemplateEngine project. To learn about this topic, refer to the AWS documentation ( https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/dns-configuring.html )
-   * It must cover at least no-subdomain and www-subdomain (e. g. "mydomain.com" and "www,mydomain.com")
+   * It must cover at least no-subdomain and www-subdomain (e. g. "mydomain.com" and "www.mydomain.com")
 </details>
 <details>
   <summary>Execute the "S3TemaplateEngine.json" in CloudFormation.</summary>
