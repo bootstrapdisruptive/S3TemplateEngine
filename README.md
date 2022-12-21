@@ -128,13 +128,13 @@ Just put your template (usual website files, html with the additional commands s
  * js/ (used for javascript files) 
 
 **Content from the following folders will be processed with the commands shown below:**
- * website/ (will be the root of the output folder)
+ * / (the root of the output folder)
    * The following files are madatory:
      * index.html (your main page)
      * 404.html (your error page)
  * part/   
 
-**Other folders and files int the root will be ignored**
+**Other folders in the root will be ignored**
 
 ## Commands<a name="Commands"></a>
 Inside the files you put into "website/" and "part/", you can use the following tags:
