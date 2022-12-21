@@ -1,0 +1,14 @@
+{
+  "name": "S3TemplateEngine",
+  "description": "S3TemplateEngine is a lightweight template engine for AWS serverless computing, helping you create AWS S3 / AWS Cloudfront hosted websites. It optionally integrates Webiny.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HOKComics/S3TemplateEngine.git"
+  },
+  "author": "HOK",
+  "bugs": {
+    "url": "https://github.com/HOKComics/S3TemplateEngine/issues"
+  },
+  "homepage": "https://github.com/HOKComics/S3TemplateEngine#readme"
+}
