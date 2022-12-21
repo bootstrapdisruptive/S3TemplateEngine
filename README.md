@@ -128,7 +128,7 @@ Just put your template (usual website files, html with the additional commands s
  * js/ (used for javascript files) 
 
 **Content from the following folders will be processed with the commands shown below:**
- * / (the root of the output folder)
+ * website/ (the root of the output folder - if you want to develop locally, I recommend moving *.html form your root to "website/" in your deploy pipeline)
    * The following files are madatory:
      * index.html (your main page)
      * 404.html (your error page)
