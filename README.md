@@ -165,7 +165,7 @@ All you have to do is to follow the installation paragraph, and you can use your
 
 ![Architecture_with_Webiny](https://user-images.githubusercontent.com/100029932/174443536-7af050de-eea7-4456-81aa-a173863b6ec9.png)
 
-### Installation of optional Webiny extension<a name="InstallationWebiny"></a>
+### Installation of optional Webiny extension<a name="InstallationWebiny">&nbsp;</a>
 <details>
   <summary>Intall S3TemplateEngine.</summary>
 
