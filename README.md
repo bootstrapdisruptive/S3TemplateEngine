@@ -140,6 +140,25 @@ Just put your template (usual website files, html with the additional commands s
 Inside the files you put into "website/" and "part/", you can use the following tags:
 <details>
   <summary> &lt;part&gt; - Reusing code from other files</summary>
+ 
+### Action
+Renders a certain code only, if a condition is met. Currently the only available condition is the environment. This is handy, if you want to have different "robots" meta tags for your produciton environment, than for dev and stage.
+### Syntax
+```html
+<part>*name*</part>
+```
+Whereas *name* is a filename or path/filename inside the "part/" directory.
+### Example
+```html
+    <head>
+        <part>head.part</part>
+    </head>
+```
+
+</details>
+<details>
+  <summary> &lt;if&gt; - Only render code, if you are in a certain environment</summary>
+
 ### Action
 Replaces the command with the content from another file. This is handy, if you want to reuse HTML headers or navigation.
 ### Syntax
@@ -168,23 +187,7 @@ Whereas *name* is a is a json object with the following attributes:
       "template": "<meta name='robots' content='all'><meta name='googlebot' content='all'>"
     }</if>
 ```
-</details>
-<details>
-  <summary> &lt;if&gt; - Only render code, if you are in a certain environment</summary>
- 
-### Action
-Renders a certain code only, if a condition is met. Currently the only available condition is the environment. This is handy, if you want to have different "robots" meta tags for your produciton environment, than for dev and stage.
-### Syntax
-```html
-<part>*name*</part>
-```
-Whereas *name* is a filename or path/filename inside the "part/" directory.
-### Example
-```html
-    <head>
-        <part>head.part</part>
-    </head>
-```
+
 </details>
 
 ## Optional: Webiny integration<a name="Webiny"></a>
