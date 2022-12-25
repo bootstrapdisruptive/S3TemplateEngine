@@ -10,8 +10,8 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 6. [Useage](#Useage)
 7. [Commands](#Commands)
 8. [Optional: Webiny extension](#Webiny)
-    1. [Concept of optional Webiny extension](#ConceptWebiny)
-    2. [Installation of optional Webiny extension](#InstallationWebiny)
+    1. [Concept of optional Webiny extension](#Conceptwebiny)
+    2. [Installation of optional Webiny extension](#Installationwebiny)
     3. [Commands of optional Webiny extension](#CommandsWebiny)
 
 ## Motivation<a name="Motivation"></a>
@@ -140,9 +140,40 @@ Just put your template (usual website files, html with the additional commands s
 Inside the files you put into "website/" and "part/", you can use the following tags:
 <details>
   <summary> &lt;part&gt; - Reusing code from other files</summary>
- 
 ### Action
 Replaces the command with the content from another file. This is handy, if you want to reuse HTML headers or navigation.
+### Syntax
+```html
+<part>*json*</part>
+```
+Whereas *name* is a is a json object with the following attributes:
+```json
+{
+  "env": "dev|stage|prod",
+  "template": "an HTML template, that will either appear or not appear"
+}
+```
+### Example
+```html
+    <if>{
+        "env": "dev",
+        "template": "<meta name='robots' content='noindex'><meta name='googlebot' content='noindex'>"
+      }</if>
+    <if>{
+        "env": "stage",
+        "template": "<meta name='robots' content='noindex'><meta name='googlebot' content='noindex'>"
+      }</if>      
+    <if>{
+      "env": "prod",
+      "template": "<meta name='robots' content='all'><meta name='googlebot' content='all'>"
+    }</if>
+```
+</details>
+<details>
+  <summary> &lt;if&gt; - Only render code, if you are in a certain environment</summary>
+ 
+### Action
+Renders a certain code only, if a condition is met. Currently the only available condition is the environment. This is handy, if you want to have different "robots" meta tags for your produciton environment, than for dev and stage.
 ### Syntax
 ```html
 <part>*name*</part>
@@ -158,14 +189,14 @@ Whereas *name* is a filename or path/filename inside the "part/" directory.
 
 ## Optional: Webiny integration<a name="Webiny"></a>
 
-### Concept of optional Webiny extension<a name="ConceptWebiny"></a>
+### Concept of optional Webiny extension<a name="Conceptwebiny"></a>
 S3TemplateEngine supports Webiny as an editors interface. Webiny ( https://www.webiny.com/ ), an open source serverless CMS ranging from a free version up to enterprise grade, also uses serverless technologies from AWS. We integrate it without any code change in Webiny, by accessing the published items on database level. So you it goes with a vanilla installation as well as with a highly cusomized one.  
 
 All you have to do is to follow the installation paragraph, and you can use your Webiny generated content in your HTML-based templates.
 
 ![Architecture_with_Webiny](https://user-images.githubusercontent.com/100029932/174443536-7af050de-eea7-4456-81aa-a173863b6ec9.png)
 
-### Installation of optional Webiny extension<a name="InstallationWebiny"></a>
+### Installation of optional Webiny extension<a name="Installationwebiny"></a>
 <details>
   <summary>Intall S3TemplateEngine.</summary>
 

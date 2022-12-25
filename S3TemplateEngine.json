@@ -578,6 +578,9 @@
                                     "WebsiteContentFromWebiny"
                                 ]
                             ]
+                        },
+                        "env": {
+                            "Ref": "Environment"
                         }
                     }
                 },
