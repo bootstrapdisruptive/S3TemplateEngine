@@ -5,16 +5,16 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 1. [Motivation](#Motivation)
 2. [Concept](#Concept)
 3. [Support](#Support)
-4. [Known non-intuitive behaviour](#Bugs)
+4. [Known non-intuitive behaviour](#Known-non-intuitive-behaviour)
 5. [Installation](#Installation)
 6. [Useage](#Useage)
 7. [Commands](#Commands)
 8. [Optional: Webiny extension](#Webiny)
-    1. [Concept of optional Webiny extension](#Conceptwebiny)
-    2. [Installation of optional Webiny extension](#Installationwebiny)
+    1. [Concept of optional Webiny extension](#Concept-of-optional-Webiny-extension)
+    2. [Installation of optional Webiny extension](#Installation-of-optional-Webiny-extension)
     3. [Commands of optional Webiny extension](#Commands-of-optional-Webiny-extension)
 
-## Motivation<a name="Motivation"></a>
+## Motivation
 AWS S3 and AWS Cloudfront offer a great platform to publish websites and web apps at a low cost. However, you need to create static HTML files elsewhere, and getting everything up and running can be a pain without a decent CMS.
 
 **This project is for you, if** you want to manually create HTML and benefit from low-cost serverless computing but still want to:
@@ -23,24 +23,24 @@ AWS S3 and AWS Cloudfront offer a great platform to publish websites and web app
  * Automatically create pages dynamically (like an individual page for each article you put in a system, rather than an SEO unfriendly AJAX load of content on a generic page)
  * Have a pipeline that optimizes/minifies your code output
 
-## Support<a name="Support"></a>
+## Support
 If you want to support this project by buying me a tea (I'm not into coffee ;-) ), feel free: https://ko-fi.com/hokcomics
 [![61e11d430afb112ea33c3aa5_Button-1](https://user-images.githubusercontent.com/100029932/174646264-edec5c8c-420b-4e54-88a7-a8dd9871ff1e.png)](https://ko-fi.com/hokcomics)
 
 If you need support, found a bug or want to donate a pull request, feel free to contact me via github.
 
-## Known non-intuitive behaviour<a name="Bugs"></a>
+## Known non-intuitive behaviour
  * When you updateyour content (by changing the temnplante files or Webiny items), **your changes will not instantly appear on your website URL**. The reason for that is, that, if you set up everything as descibed below, your Domain routes to CloudFront, and CloudFront caches files. I recommend using your S3 bucket (https://<your environment (as enetred in cloudformation)>-website-<you website name (as enetred in cloudformation)>.s3.<your region, as choosen in AWS>.amazonaws.com/index.html) for preview and using the "invalidation" feature of CloudFront (https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/Invalidation.html) once you are happy with your changes.
 
 
-## Concept<a name="Concept"></a>
+## Concept
 S3TemplateEngine uses serverless technologies (S3, Lambda, DynamoDB, Cloudformation) to provide a straightforward but powerful template language. 
 
 All you have to do is follow the installation paragraph, and you can write your HTML-based templates, put them into a specific S3 bucket and see the magic happen.
 
 ![Architecture](https://user-images.githubusercontent.com/100029932/174443152-b16c98fc-f2f2-420e-9f5b-a6ea7a861acd.png)
 
-## Installation<a name="Installation"></a>
+## Installation
 <details>
   <summary>Download the github repository.</summary>
 
@@ -119,7 +119,7 @@ Use your preferred way to pull the project, or (if you are not that experienced 
    * Write the name of your "*S3LambdaBucket*" in the verification tetx field and click "Delete bucket"
 </details>
 
-## Useage<a name="Useage"></a>
+## Useage
 Just put your template (usual website files, html with the additional commands shown below) in the "prod-website-code-\<your page name\>" s3 bucket. The system will behave as follows:
 
 **Content from the following folders will be synced (copied or deleted) to the output S3 bucket:**
@@ -136,7 +136,7 @@ Just put your template (usual website files, html with the additional commands s
 
 **Other folders and files int the root will be ignored**
 
-## Commands<a name="Commands"></a>
+## Commands
 Inside the files you put into "website/" and "part/", you can use the following tags:
 <details>
   <summary> &lt;part&gt; - Reusing code from other files</summary>
@@ -190,16 +190,16 @@ Whereas *name* is a is a json object with the following attributes:
 
 </details>
 
-## Optional: Webiny integration<a name="Webiny"></a>
+## Optional: Webiny integration
 
-### Concept of optional Webiny extension<a name="Conceptwebiny"></a>
+### Concept of optional Webiny extension
 S3TemplateEngine supports Webiny as an editors interface. Webiny ( https://www.webiny.com/ ), an open source serverless CMS ranging from a free version up to enterprise grade, also uses serverless technologies from AWS. We integrate it without any code change in Webiny, by accessing the published items on database level. So you it goes with a vanilla installation as well as with a highly cusomized one.  
 
 All you have to do is to follow the installation paragraph, and you can use your Webiny generated content in your HTML-based templates.
 
 ![Architecture_with_Webiny](https://user-images.githubusercontent.com/100029932/174443536-7af050de-eea7-4456-81aa-a173863b6ec9.png)
 
-### Installation of optional Webiny extension<a name="Installationwebiny"></a>
+### Installation of optional Webiny extension
 <details>
   <summary>Intall S3TemplateEngine.</summary>
 
@@ -305,7 +305,7 @@ All you have to do is to follow the installation paragraph, and you can use your
    * Write the name of your "*S3LambdaBucket*" in the verification tetx field and click "Delete bucket"
 </details>
 
-### Commands of optional Webiny extension<a name="CommandsWebiny"></a>
+### Commands of optional Webiny extension
 Inside the files you put into "website/" and "part/", you can use the following tags:
 <details>
   <summary> &lt;dbpart&gt; - Inserting code or content maintained in Webiny</summary>
