@@ -165,13 +165,16 @@ Replaces the command with the content from another file. This is handy, if you w
 ```html
 <part>*json*</part>
 ```
-Whereas *name* is a is a json object with the following attributes:
+Whereas *json* is a is a json object with the following attributes:
 ```json
 {
-  "env": "dev|stage|prod",
+  "env": "match the current environment dev|stage|prod",
+  "file": "match the rendered filename e.g. index.html",
+  "not": true|false - if true invert result of other machtes,
   "template": "an HTML template, that will either appear or not appear"
 }
 ```
+Whereas *env*, *file* and *not* are optional (but the whole command only makes sense, if you use at least one of them).
 ### Example
 ```html
     <if>{
@@ -188,6 +191,22 @@ Whereas *name* is a is a json object with the following attributes:
     }</if>
 ```
 
+</details>
+
+<details>
+  <summary> &lt;fileattribute&gt; - Inserts file attributs (also Webiny items values, based on dbmultifile loop created files)</summary>
+ 
+### Action
+Replaces the \<fileattribute\>-command with the current filename. Handy for generation of canonical tags.<br><br>Also works inside a \<dbmultifile\>-command: 
+### Syntax
+```html
+<fileattribute>filename</fileattribute>
+```
+Currently filename is the only command available.
+### Example
+```html
+<fileattribute>filename</fileattribute>
+```
 </details>
 
 ## Optional: Webiny integration
@@ -398,20 +417,5 @@ Whereas *fieldname* is the name of an attribute (column) from the DynamoDB.
 ### Example
 ```html
 <dbitem>headline</dbitem>
-```
-</details>
-<details>
-  <summary> &lt;fileattribute&gt; - Inserts Webiny items values, based on dbmultifile loop created files</summary>
- 
-### Action
-Inside a \<dbmultifile\>-command: Replaces the \<fileattribute\>-command with the current filename. Handy for generation of canonical tags.
-### Syntax
-```html
-<fileattribute>filename</fileattribute>
-```
-Currently filename is the only command available.
-### Example
-```html
-<fileattribute>filename</fileattribute>
 ```
 </details>
