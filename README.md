@@ -219,19 +219,12 @@ Currently filename is the only command available.
 ## Optional - Multi language pages
 
 ### Concept of multi language pages
-The use of multiple languages on your page is optional. However, if you want to use them, you'll need some additional preperation steps. After that you can utilize the languag specific commands, shown below. The idea of this multi language implementation is, that you'll have a different CloudFront distribution per page. This will allow you full control, what type of URL you use:
-    
-    
-   * EN: "mydomain.com"
-   * DE: "mydomain.de"
-    
-    
-   * EN: "en.mydomain.com"
-   * DE: "de.mydomain.com"
-    
-    
-   * EN: "mydomain.com/en"
-   * DE: "mydomain.com/de"
+The use of multiple languages on your page is optional. However, if you want to use them, you'll need some additional preperation steps. After that you can utilize the languag specific commands, shown below. The idea of this multi language implementation is, that you'll have a different CloudFront distribution per page. This will allow you full control, what type of URL you use:  
+
+|  | Example 1 | Example 2 | Example 3 |
+| :----------- | :------------: | :------------: | ------------: |
+| EN | "mydomain.com" | "en.mydomain.com" | "mydomain.com/en" |
+| DE | "mydomain.de" | "de.mydomain.com" | "mydomain.com/de" |
 
 ### Set-Up of multi language pages
 <details>
