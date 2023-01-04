@@ -601,12 +601,14 @@ I strongly belive, that the best user experience for content editors is having t
 ### Using multi language in Webiny
 <details>
   <summary>Intall S3TemplateEngine, Multi Language and Webiny.</summary>
+    
    * Install S3TemplateEngine, as described in the [Installation](#Installation) paragraph.
    * Install S3TemplateEngine multi language extension, as described in the [Set-Up op multi language pages](#Set-Up-of-multi-language-pages) paragraph.
       * Install S3TemplateEngine Webiny extension, as described in the [Installation of optional Webiny extension](#Installation-of-optional-Webiny-extension) paragraph.
 </details>
 <details>
   <summary>Add fields for you additonal locales in all data models.</summary>
+    
    * Go to your Webiny admin interface
    * Navigate to Modles -> staticContent and click the pen to edit the model
 You'll see a field "contentid" that's the key for your data item. And a field "content", that is the fallback content of your item. It will be rendered every time no language specific field is part of the model. For the most of us, it will be benificial to here put the english content.
