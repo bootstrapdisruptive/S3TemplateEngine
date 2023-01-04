@@ -230,6 +230,7 @@ The use of multiple languages on your page is optional. However, if you want to 
 ### Set-Up of multi language pages
 <details>
   <summary>Preparation</summary>
+    
    * If not already done, Install S3TemplateEngine, as described in the [Installation](#Installation) paragraph.
 </details>
 Do the following steps once for each additional language. The base language (eg. en) is part of the normal set-up. If yoou need two more languages (e.g. de and fr), you'll need to do the stuff next steps twice to end up with three different languages.
@@ -267,6 +268,7 @@ Do the following steps once for each additional language. The base language (eg.
 The last steps have to be executed only once, at the end of your multi language preperation:
 <details>
   <summary>Tell your Lambda function 'HOK_move_file' about the buckets you created.</summary>  
+    
    * In the AWS console, open Lambda
    * Find "<YourEnviornment>_HOK_move_file" and click on the linked function name to open function editing
    * Navifate to "Configuration" and "Environment variables", there click on edit
