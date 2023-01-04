@@ -9,15 +9,15 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 5. [Installation](#Installation)
 6. [Useage](#Useage)
 7. [Commands](#Commands)
-8. [Optional: Multi language pages](#Optional:-Multi-language-pages)
+8. [Optional - Multi language pages](#Optional---Multi-language-pages)
     1. [Concept of multi language pages](#Concept-of-multi-language-pages)
     2. [Set-Up op multi language pages](#Set-Up-of-multi-language-pages)
     3. [Commands of multi language pages](#Commands-of-multi-language-pages)
-9. [Optional: Webiny integration](#Optional:-Webiny-integration)
+9. [Optional - Webiny integration](#Optional---Webiny-integration)
     1. [Concept of optional Webiny extension](#Concept-of-optional-Webiny-extension)
     2. [Installation of optional Webiny extension](#Installation-of-optional-Webiny-extension)
     3. [Commands of optional Webiny extension](#Commands-of-optional-Webiny-extension)
-10. [Optional: Webiny multi language pages](#Optional:-Webiny-multi-language-pages)
+10. [Optional - Webiny multi language pages](#Optional---Webiny-multi-language-pages)
     1. [Concept of Webiny multi language pages](#Concept-of-Webiny-multi-language-pages)
     2. [Using multi language in Webiny](#Using-multi-language-in-Webiny)
 
@@ -216,7 +216,7 @@ Currently filename is the only command available.
 ```
 </details>
 
-## Optional: Multi language pages
+## Optional - Multi language pages
 
 ### Concept of multi language pages
 The use of multiple languages on your page is optional. However, if you want to use them, you'll need some additional preperation steps. After that you can utilize the languag specific commands, shown below. The idea of this multi language implementation is, that you'll have a different CloudFront distribution per page. This will allow you full control, what type of URL you use:
@@ -376,7 +376,7 @@ Whereas *lang* is the 2 digit lang code (like "en", "de", "fr", ...), and *conte
 ```
 </details>
 
-## Optional: Webiny integration
+## Optional - Webiny integration
 
 ### Concept of optional Webiny extension
 S3TemplateEngine supports Webiny as an editors interface. Webiny ( https://www.webiny.com/ ), an open source serverless CMS ranging from a free version up to enterprise grade, also uses serverless technologies from AWS. We integrate it without any code change in Webiny, by accessing the published items on database level. So you it goes with a vanilla installation as well as with a highly cusomized one.  
@@ -587,7 +587,7 @@ Whereas *fieldname* is the name of an attribute (column) from the DynamoDB.
 ```
 </details>
 
-## Optional: Webiny multi language pages
+## Optional - Webiny multi language pages
 
 ### Concept of Webiny multi language pages
 S3TemplateEngine differs from the standard Webiny way to implement multi language by intention. 
