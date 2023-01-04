@@ -475,13 +475,23 @@
                     "arm64"
                 ],
                 "Code": {
-                    "ZipFile": "'use strict';\nvar AWS = require('aws-sdk');\nconst sRegion = process.env.AWS_REGION;\nconst sDestBucket = process.env.destination_bucket;\nAWS.config.update({region: sRegion});\nconst s3 = new AWS.S3 (); \n\nexports.handler = async (event) => {\n            \n    console.log(JSON.stringify(event));\n                    \n    try{\n        for (let record of event.Records) {\n            \n            if( record.eventName.startsWith('ObjectRemoved') ){\n                let params = {\n                    Bucket: sDestBucket,\n                    Key: record.s3.object.key\n                };\n                await s3.deleteObject(params).promise();                \n            } else {\n                let params = {\n                    CopySource: record.s3.bucket.name + '/' + record.s3.object.key,\n                    Bucket: sDestBucket,\n                    Key: record.s3.object.key,\n                    ACL: 'public-read'\n                };\n                await s3.copyObject(params).promise();                \n            }\n\n        }\n    } catch(err){throw(err);}\n    \n    return 0;\n};"
+                    "ZipFile": "'use strict';\nvar AWS = require('aws-sdk');\nconst sRegion = process.env.AWS_REGION;\nconst aDestBucket = JSON.parse(process.env.destination_bucket);\nAWS.config.update({region: sRegion});\nconst s3 = new AWS.S3 (); \n\nexports.handler = async (event) => {\n            \n    console.log(JSON.stringify(event));\n                    \n    try{\n        for (let record of event.Records) {\n            for(let j=0; j<aDestBucket.length; j++){\n                if( record.eventName.startsWith('ObjectRemoved') ){\n                    let params = {\n                        Bucket: aDestBucket[j],\n                        Key: record.s3.object.key\n                    };\n                    await s3.deleteObject(params).promise();                \n                } else {\n                    let params = {\n                        CopySource: record.s3.bucket.name + '/' + record.s3.object.key,\n                        Bucket: aDestBucket[j],\n                        Key: record.s3.object.key,\n                        ACL: 'public-read'\n                    };\n                    await s3.copyObject(params).promise();                \n                }\n            }\n        }\n    } catch(err){throw(err);}\n    \n    return 0;\n};"
                 },
                 "Handler": "index.handler",
                 "Environment": {
                     "Variables": {
                         "destination_bucket": {
-                            "Ref": "S3WEBSITE"
+                            "Fn::Join": [
+                                "",
+                                [
+                                    "[\"",                                    
+                                    {
+                                        "Ref": "S3WEBSITE"
+                                    },
+                                    "\"]"
+                                ]
+                            ]
+
                         }
                     }
                 },
@@ -565,6 +575,7 @@
                         "destination_bucket": {
                             "Ref": "S3WEBSITE"
                         },
+                        "destination_buckets_multi_lang": "",                        
                         "html_part_element_table": {
                             "Ref": "DDBWebsiteHtmlConnections"
                         },

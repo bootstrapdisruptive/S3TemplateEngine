@@ -9,10 +9,17 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 5. [Installation](#Installation)
 6. [Useage](#Useage)
 7. [Commands](#Commands)
-8. [Optional: Webiny extension](#Webiny)
-    1. [Concept of optional Webiny extension](#Concept-of-optional-Webiny-extension)
-    2. [Installation of optional Webiny extension](#Installation-of-optional-Webiny-extension)
-    3. [Commands of optional Webiny extension](#Commands-of-optional-Webiny-extension)
+8. [Optional: Multi language pages](#Optional:-Multi-language-pages)
+    a. [Concept of multi language pages](#Concept-of-multi-language-pages)
+    6. [Set-Up op multi language pages](#Set-Up-of-multi-language-pages)
+    b. [Commands of multi language pages](#Commands-of-multi-language-pages)
+9. [Optional: Webiny integration](#Optional:-Webiny-integration)
+    a. [Concept of optional Webiny extension](#Concept-of-optional-Webiny-extension)
+    b. [Installation of optional Webiny extension](#Installation-of-optional-Webiny-extension)
+    c. [Commands of optional Webiny extension](#Commands-of-optional-Webiny-extension)
+10. [Optional: Webiny multi language pages](#Optional:-Webiny-multi-language-pages)
+    a. [Concept of Webiny multi language pages](#Concept-of-Webiny-multi-language-pages)
+    b. [Using multi language in Webiny](#Using-multi-language-in-Webiny)
 
 ## Motivation
 AWS S3 and AWS Cloudfront offer a great platform to publish websites and web apps at a low cost. However, you need to create static HTML files elsewhere, and getting everything up and running can be a pain without a decent CMS.
@@ -206,6 +213,166 @@ Currently filename is the only command available.
 ### Example
 ```html
 <fileattribute>filename</fileattribute>
+```
+</details>
+
+## Optional: Multi language pages
+
+### Concept of multi language pages
+The use of multiple languages on your page is optional. However, if you want to use them, you'll need some additional preperation steps. After that you can utilize the languag specific commands, shown below. The idea of this multi language implementation is, that you'll have a different CloudFront distribution per page. This will allow you full control, what type of URL you use:
+   * EN: "mydomain.com"
+   * DE: "mydomain.de"
+   * EN: "en.mydomain.com"
+   * DE: "de.mydomain.com"
+   * EN: "mydomain.com/en"
+   * DE: "mydomain.com/de"
+
+### Set-Up of multi language pages
+<details>
+  <summary>Preparation</summary>
+   * If not already done, Install S3TemplateEngine, as described in the [Installation](#Installation) paragraph.
+</details>
+Do the following steps once for each additional language. The base language (eg. en) is part of the normal set-up. If yoou need two more languages (e.g. de and fr), you'll need to do the stuff next steps twice to end up with three different languages.
+<details>
+  <summary>Execute the "S3TemaplateEngineAdditionalLanguage.json" in CloudFormation.</summary>
+
+   * Cretae an AWS account or sign in into an existing one
+   * In the AWS console, make sure you are on target region (**S3TemplateEngine is currently only working within a single region**)
+   * go to "CloudFormation"
+     * Click on "Create Stack"
+     * Select "Template is ready" and "Upload a template file"
+     * Click on "choose file" and select "S3TemaplateEngineAdditionalLanguage.json"
+     * Click on "Next"
+     * Fill out Stack Name and Parameters **Be aware, that the parameters Environment and WebsiteName have to be exactly the same parameters you used when installing S3TemaplateEngine - Website URL may differ**
+     * Click "Next"
+     * Check "I acknowledge that AWS CloudFormation might create IAM resources with custom names."
+     * Click "Create Stack"
+</details>
+<details>
+  <summary>Connect your Route53 domain to the CloundFront that was created.</summary>
+  
+   * In the AWS console, open Route53
+   * Navigate to your hosted zone
+   * Generate record "empty" "A"
+     * Click on "Create record"
+     * leave the box before your doamin name empty
+     * choose "A" as record type 
+     * Check "Alias" and choose "Alias to CloudFront distribution"
+     * Choose the distribution that was created earlier (by CloudFormation)
+   * Click "Add another record" and repeat the same for "empty" "AAAA"
+   * Click "Add another record" and repeat the same for "www" "A"
+   * Click "Add another record" and repeat the same for "www" "AAAA"
+   * Click on Create records
+</details>
+The last steps have to be executed only once, at the end of your multi language preperation:
+<details>
+  <summary>Tell your Lambda function 'HOK_move_file' about the buckets you created.</summary>  
+   * In the AWS console, open Lambda
+   * Find "<YourEnviornment>_HOK_move_file" and click on the linked function name to open function editing
+   * Navifate to "Configuration" and "Environment variables", there click on edit
+   * Edit the value of the key "destination_bucket", by adding the new language buckets to the array"   
+You need to create a small JSON with your data and then enter it into the "value" field without any line breaks.
+```json
+["<s3 bucket name>","<s3 bucket name for new lang>",...]
+```
+e.g.
+```json
+["prod-website-myurl","prod-website-myurl-de"]
+```
+</details>
+<details>
+  <summary>Tell your Lambda function 'HOK_render_html_files' about the buckets you created.</summary>  
+   * In the AWS console, open Lambda
+   * Find "<YourEnviornment>_HOK_render_html_files" and click on the linked function name to open function editing
+   * Navifate to "Configuration" and "Environment variables", there click on edit
+   * Edit the value of the key "destination_buckets_multi_lang" as described below and click on "save"
+
+You need to create a small JSON with your data and then enter it into the "value" field without any line breaks.
+```json
+{
+  "languages":[
+    {"<countrycode>":"<s3 bucket name>"},
+    ...
+  ]
+}
+```
+e.g.
+```json
+{
+  "languages":[
+    {
+      "en":
+      {
+        "bucket":"prod-website-myurl",
+        "baseurl":"mywebsite.com"
+      }
+    },
+    {
+      "de":{
+        "bucket":"prod-website-myurl-de",
+        "baseurl":"mywebsite.de"
+      }
+    }
+  ]
+}
+```
+will become
+```
+{"languages":[{"en":{"bucket":"prod-website-myurl","baseurl":"mywebsite.com"}},{"de":{"bucket":"prod-website-myurl-de","baseurl":"mywebsite.de"}}]}
+```
+</details>
+
+### Commands-of-multi-language-pages
+Inside the files you put into "website/" and "part/", you can use the following tags:
+<details>
+  <summary> &lt;lang&gt; - Printing the current pages language</summary>
+### Action
+Renders the current language. Handy for language switchers and meta data.
+### Syntax
+```html
+<lang>*command*</lang>
+```
+Whereas *command* is 2 for a 2 digit lang code (like "en", "de", "fr", ...).<br>
+Whereas *command* is baseurl for printing the language specific baseurl you defined in the set-up step.
+### Example
+```html
+<html lang="<lang>2</lang>">
+<head>
+  <link rel='canonical' href='https://<if>{
+    "env": "dev",
+    "template": "dev."
+  }</if><if>{
+    "env": "stage",
+    "template": "stage."
+  }</if><lang>baseurl</lang><if>{
+    "file": "index.html",
+    "not": true,
+    "template": "/<fileattribute>filename</fileattribute>"
+  }</if>' />
+  ...
+</head>
+```
+</details>
+<details>
+  <summary> &lt;switchlang&gt; - Providing different content for multiple languages</summary>
+### Action
+Renders language specific content (e.g. hardcoded text).
+### Syntax
+```html
+<switchlang>
+  <*lang*>*content*<*/lang*>
+  ...
+</switchlang>
+```
+Whereas *lang* is the 2 digit lang code (like "en", "de", "fr", ...), and *content* is the content for this lang code.
+### Example
+```html
+<p>
+  <switchlang>
+    <de>Dein ultimatives Website Werkzeug</de>
+    <en>Your ultimate website tool</en>
+  </switchlang>
+</p>
 ```
 </details>
 
@@ -418,4 +585,33 @@ Whereas *fieldname* is the name of an attribute (column) from the DynamoDB.
 ```html
 <dbitem>headline</dbitem>
 ```
+</details>
+
+## Optional: Webiny multi language pages
+
+### Concept of Webiny multi language pages
+S3TemplateEngine differs from the standard Webiny way to implement multi language by intention. 
+
+**Webiny usually allows you to define different data models for each language.**
+This has some use cases and you can tweak S3TemplateEngine to work with this as well. (If you want to do this, please contact me: it has been done before, but it is a lillte more complicated and not part of the open source project.) But I consider these usecases as edge cases, so I decided to go a different way with S3TemplateEngine.
+
+**S3TemplateEngine works differently**
+I strongly belive, that the best user experience for content editors is having the different locales side by side. Therefore we'll use ONE Webiny locale and one data model, inserting different fields for the different languages.
+
+### Using multi language in Webiny
+<details>
+  <summary>Intall S3TemplateEngine, Multi Language and Webiny.</summary>
+   * Install S3TemplateEngine, as described in the [Installation](#Installation) paragraph.
+   * Install S3TemplateEngine multi language extension, as described in the [Set-Up op multi language pages](#Set-Up-of-multi-language-pages) paragraph.
+      * Install S3TemplateEngine Webiny extension, as described in the [Installation of optional Webiny extension](#Installation-of-optional-Webiny-extension) paragraph.
+</details>
+<details>
+  <summary>Add fields for you additonal locales in all data models.</summary>
+   * Go to your Webiny admin interface
+   * Navigate to Modles -> staticContent and click the pen to edit the model
+You'll see a field "contentid" that's the key for your data item. And a field "content", that is the fallback content of your item. It will be rendered every time no language specific field is part of the model. For the most of us, it will be benificial to here put the english content.
+   * To add a language, add another field like "content" (in this case a "rich text input" field) and name it "content<lang>". e.g. "contentde". **I'm talking about the "Field ID" here, not the label. Exyample: You can lable the content field with English and the contentde field with German, if oyu want.**
+You can add as many languages as you like, but be aware, that you'll need to fill these fields for all content elements. An empty field will result in an empty string. The fallback functionality just works, if a whole language is not set up in the model.
+   * Click on "Save"   
+   * Repeat this for "staticCodeContent" and all custom models you created.
 </details>
