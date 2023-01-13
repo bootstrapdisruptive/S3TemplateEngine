@@ -9,7 +9,7 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 5. [Installation](#Installation)
 6. [Useage](#Useage)
 7. [Commands](#Commands)
-8. [Optional - page variations (e.g. website and web-app)](#Optional---page-variations-(e.g.-website-and-web-app))
+8. [Optional - page variations - e.g. website and web-app](#Optional---page-variations---e.g.-website-and-web-app)
     1. [Concept of page variations](#Concept-of-page-variations)
     2. [Set-Up of page variations](#Set-Up-of-page-variations)
 9. [Optional - Multi language pages](#Optional---Multi-language-pages)
@@ -219,7 +219,7 @@ Currently filename is the only command available.
 ```
 </details>
 
-## Optional - page variations (e.g. website and web-app)
+## Optional - page variations - e.g. website and web-app
 
 ### Concept of page variations
 If you want to host multiple pages with similar content and/or domains but different code, S3 Template Engine has your back. A common use case is having a website and a web-app with a slightly different domain (e.g. app.your-domain.com), same CMS/Webiny objects to render and different hmtl/CSS/JavaScript code.
@@ -351,6 +351,7 @@ It has to be entered as one liner, so it will become
 </details>
 <details>
   <summary>Tell your Lambda function 'HOK_render_html_files' about the buckets you created.</summary>  
+  
    * In the AWS console, open Lambda
    * Find "<YourEnviornment>_HOK_render_html_files" and click on the linked function name to open function editing
    * Navigate to "Configuration" and "Environment variables", there click on edit
@@ -489,6 +490,7 @@ It has to be entered as one liner, so it will become
 
 <details>
   <summary>Tell your Lambda function 'HOK_render_html_files' about the buckets you created.</summary>  
+  
    * In the AWS console, open Lambda
    * Find "<YourEnviornment>_HOK_render_html_files" and click on the linked function name to open function editing
    * Navigate to "Configuration" and "Environment variables", there click on edit
