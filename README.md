@@ -9,15 +9,18 @@ S3TemplateEngine is a lightweight template engine for AWS serverless computing, 
 5. [Installation](#Installation)
 6. [Useage](#Useage)
 7. [Commands](#Commands)
-8. [Optional - Multi language pages](#Optional---Multi-language-pages)
+8. [Optional - page variations (e.g. website and web-app)](#Optional---page-variations-(e.g.-website-and-web-app))
+    1. [Concept of page variations](#Concept-of-page-variations)
+    2. [Set-Up of page variations](#Set-Up-of-page-variations)
+9. [Optional - Multi language pages](#Optional---Multi-language-pages)
     1. [Concept of multi language pages](#Concept-of-multi-language-pages)
     2. [Set-Up op multi language pages](#Set-Up-of-multi-language-pages)
     3. [Commands of multi language pages](#Commands-of-multi-language-pages)
-9. [Optional - Webiny integration](#Optional---Webiny-integration)
+10. [Optional - Webiny integration](#Optional---Webiny-integration)
     1. [Concept of optional Webiny extension](#Concept-of-optional-Webiny-extension)
     2. [Installation of optional Webiny extension](#Installation-of-optional-Webiny-extension)
     3. [Commands of optional Webiny extension](#Commands-of-optional-Webiny-extension)
-10. [Optional - Webiny multi language pages](#Optional---Webiny-multi-language-pages)
+11. [Optional - Webiny multi language pages](#Optional---Webiny-multi-language-pages)
     1. [Concept of Webiny multi language pages](#Concept-of-Webiny-multi-language-pages)
     2. [Using multi language in Webiny](#Using-multi-language-in-Webiny)
 
@@ -216,6 +219,147 @@ Currently filename is the only command available.
 ```
 </details>
 
+## Optional - page variations (e.g. website and web-app)
+
+### Concept of page variations
+If you want to host multiple pages with similar content and/or domains but different code, S3 Template Engine has your back. A common use case is having a website and a web-app with a slightly different domain (e.g. app.your-domain.com), same CMS/Webiny objects to render and different hmtl/CSS/JavaScript code.
+
+In this setup you'll have a seperate code input bucket for each variation and of course a unique cloud front distribution for each.
+
+### Set-Up of page variations
+<details>
+  <summary>Preparation</summary>
+    
+   * If not already done, Install S3TemplateEngine, as described in the [Installation](#Installation) paragraph.
+</details>
+Do the following steps once for each additional variation. The base variant, taht'S also used if you don't configure any variants, is always called "website". If yoou need more additional variants (e.g. app and admin), you'll need to do the stuff next steps twice to end up with three different variants.
+<details>
+  <summary>Execute the "S3TemaplateEngineAdditionalVariation.json" in CloudFormation.</summary>
+
+   * Cretae an AWS account or sign in into an existing one
+   * In the AWS console, make sure you are on target region (**S3TemplateEngine is currently only working within a single region**)
+   * go to "CloudFormation"
+     * Click on "Create Stack"
+     * Select "Template is ready" and "Upload a template file"
+     * Click on "choose file" and select "S3TemaplateEngineAdditionalVariation.json"
+     * Click on "Next"
+     * Fill out Stack Name and Parameters **Be aware, that the parameters Environment and WebsiteName have to be exactly the same parameters you used when installing S3TemaplateEngine - Website URL may differ**
+     * Click "Next"
+     * Check "I acknowledge that AWS CloudFormation might create IAM resources with custom names."
+     * Click "Create Stack"
+</details>
+<details>
+  <summary>Connect your Route53 domain to the CloundFront that was created.</summary>
+  
+   * In the AWS console, open Route53
+   * Navigate to your hosted zone
+   * Generate record "empty" "A"
+     * Click on "Create record"
+     * leave the box before your doamin name empty
+     * choose "A" as record type 
+     * Check "Alias" and choose "Alias to CloudFront distribution"
+     * Choose the distribution that was created earlier (by CloudFormation)
+   * Click "Add another record" and repeat the same for "empty" "AAAA"
+   * Click "Add another record" and repeat the same for "www" "A"
+   * Click "Add another record" and repeat the same for "www" "AAAA"
+   * Click on Create records
+</details>
+The last steps have to be executed only once, at the end of your multi variant preperation:
+
+<details>
+  <summary>Tell your Lambda function 'HOK_move_file' about the buckets you created.</summary>  
+    
+   * In the AWS console, open Lambda
+   * Find "<YourEnviornment>_HOK_move_file" and click on the linked function name to open function editing
+   * Navigate to "Configuration" and "Environment variables", there click on edit
+   * Edit the value of the key "config", by adding the new variation buckets to the array   
+
+If you use multiple different variations of your content (e.g. an "app." besides a "www."), you need to add one language array for each content.
+```json
+{
+  "website":[
+    {"<countrycode>":"<s3 bucket name>"},
+    ...
+  ],
+  "<variation name>":[
+    {"<countrycode>":"<s3 bucket name>"},
+    ...
+  ],
+  ...
+}
+```
+
+If you use multiple different variations of your content (e.g. an "app." besides a "www."), you need to add one language array for each content.
+```json
+{
+  "website":[
+    {"<countrycode>":"<s3 bucket name>"},
+    {"<countrycode>":"<s3 bucket name for new lang>"},
+    ...
+  ],
+  "<variation name>":[
+    {"<countrycode>":"<s3 bucket name>"},
+    {"<countrycode>":"<s3 bucket name for new lang>"},    
+    ...
+  ],
+  ...
+}
+```
+
+e.g.
+```json
+{
+  "website":[
+    {
+      "en":
+      {
+        "bucket":"prod-website-myurl",
+        "baseurl":"mywebsite.com"
+      }
+    },
+    {
+      "de":{
+        "bucket":"prod-website-myurl-de",
+        "baseurl":"mywebsite.de"
+      }
+    }
+  ],
+  "app":[
+    {
+      "en":
+      {
+        "bucket":"prod-app-myurl",
+        "baseurl":"mywebsite.com"
+      }
+    },
+    {
+      "de":{
+        "bucket":"prod-app-myurl-de",
+        "baseurl":"mywebsite.de"
+      }
+    }
+  ]  
+}
+```
+
+It has to be entered as one liner, so it will become
+```
+{ "website":[ { "en": { "bucket":"prod-website-myurl", "baseurl":"mywebsite.com" } }, { "de":{ "bucket":"prod-website-myurl-de", "baseurl":"mywebsite.de" } } ], "app":[ { "en": { "bucket":"prod-app-myurl", "baseurl":"mywebsite.com" } }, { "de":{ "bucket":"prod-app-myurl-de", "baseurl":"mywebsite.de" } } ] }
+```
+
+
+</details>
+<details>
+  <summary>Tell your Lambda function 'HOK_render_html_files' about the buckets you created.</summary>  
+   * In the AWS console, open Lambda
+   * Find "<YourEnviornment>_HOK_render_html_files" and click on the linked function name to open function editing
+   * Navigate to "Configuration" and "Environment variables", there click on edit
+   * Edit the value of the key "config" as described below and click on "save"
+
+You need to create a small JSON with your data and then enter it into the "value" field without any line breaks. It's teh same you used for 'HOK_move_file' in the last step.
+
+</details>
+
 ## Optional - Multi language pages
 
 ### Concept of multi language pages
@@ -270,37 +414,41 @@ The last steps have to be executed only once, at the end of your multi language 
     
    * In the AWS console, open Lambda
    * Find "<YourEnviornment>_HOK_move_file" and click on the linked function name to open function editing
-   * Navifate to "Configuration" and "Environment variables", there click on edit
-   * Edit the value of the key "destination_bucket", by adding the new language buckets to the array"   
-You need to create a small JSON with your data and then enter it into the "value" field without any line breaks.
-```json
-["<s3 bucket name>","<s3 bucket name for new lang>",...]
-```
-e.g.
-```json
-["prod-website-myurl","prod-website-myurl-de"]
-```
-</details>
-<details>
-  <summary>Tell your Lambda function 'HOK_render_html_files' about the buckets you created.</summary>  
-   * In the AWS console, open Lambda
-   * Find "<YourEnviornment>_HOK_render_html_files" and click on the linked function name to open function editing
-   * Navifate to "Configuration" and "Environment variables", there click on edit
-   * Edit the value of the key "destination_buckets_multi_lang" as described below and click on "save"
+   * Navigate to "Configuration" and "Environment variables", there click on edit
+   * Edit the value of the key "config", by adding the new variation buckets to the array   
 
-You need to create a small JSON with your data and then enter it into the "value" field without any line breaks.
+If you use multiple different variations of your content (e.g. an "app." besides a "www."), you need to add one language array for each content.
 ```json
 {
-  "languages":[
+  "website":[
     {"<countrycode>":"<s3 bucket name>"},
+    {"<countrycode>":"<s3 bucket name for new lang>"},
     ...
   ]
 }
 ```
+
+If you use multiple different variations of your content (e.g. an "app." besides a "www."), you need to add one language array for each content.
+```json
+{
+  "website":[
+    {"<countrycode>":"<s3 bucket name>"},
+    {"<countrycode>":"<s3 bucket name for new lang>"},
+    ...
+  ],
+  "<variation name>":[
+    {"<countrycode>":"<s3 bucket name>"},
+    {"<countrycode>":"<s3 bucket name for new lang>"},    
+    ...
+  ],
+  ...
+}
+```
+
 e.g.
 ```json
 {
-  "languages":[
+  "website":[
     {
       "en":
       {
@@ -314,13 +462,40 @@ e.g.
         "baseurl":"mywebsite.de"
       }
     }
-  ]
+  ],
+  "app":[
+    {
+      "en":
+      {
+        "bucket":"prod-app-myurl",
+        "baseurl":"mywebsite.com"
+      }
+    },
+    {
+      "de":{
+        "bucket":"prod-app-myurl-de",
+        "baseurl":"mywebsite.de"
+      }
+    }
+  ]  
 }
 ```
-will become
+
+It has to be entered as one liner, so it will become
 ```
-{"languages":[{"en":{"bucket":"prod-website-myurl","baseurl":"mywebsite.com"}},{"de":{"bucket":"prod-website-myurl-de","baseurl":"mywebsite.de"}}]}
+{ "website":[ { "en": { "bucket":"prod-website-myurl", "baseurl":"mywebsite.com" } }, { "de":{ "bucket":"prod-website-myurl-de", "baseurl":"mywebsite.de" } } ], "app":[ { "en": { "bucket":"prod-app-myurl", "baseurl":"mywebsite.com" } }, { "de":{ "bucket":"prod-app-myurl-de", "baseurl":"mywebsite.de" } } ] }
 ```
+</details>
+
+<details>
+  <summary>Tell your Lambda function 'HOK_render_html_files' about the buckets you created.</summary>  
+   * In the AWS console, open Lambda
+   * Find "<YourEnviornment>_HOK_render_html_files" and click on the linked function name to open function editing
+   * Navigate to "Configuration" and "Environment variables", there click on edit
+   * Edit the value of the key "config" as described below and click on "save"
+
+You need to create a small JSON with your data and then enter it into the "value" field without any line breaks. It's teh same you used for 'HOK_move_file' in the last step.
+
 </details>
 
 ### Commands-of-multi-language-pages
