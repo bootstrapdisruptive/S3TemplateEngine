@@ -635,12 +635,12 @@ All you have to do is to follow the installation paragraph, and you can use your
      * Click "Create Stack"
 </details>
 <details>
-  <summary>Connect the DynamoDB stream of your webiny installtion with the receiving lambda function of S3TemplateEngine.</summary>
+  <summary>Connect the DynamoDB stream of your webiny installation with the receiving lambda function of S3TemplateEngine.</summary>
     
    * Navigate to your DynamoDB console. At the time this document was created, the link is https://console.aws.amazon.com/dynamodbv2/home
    * Make sure you are in the correct region
    * Clik on "tables" 
-   * Click on your Webiny table (usually it's named "webiny-<7 diogit code>")    
+   * Click on your Webiny table (usually it's named "webiny-<7 digit code>")    
    * In “Export and Streams” -> “DynamoDB stream details” click on "Enable"
    * Choose “New and old images” and click on “Enable stream”
    * In “DynamoDB stream details” click on “Create trigger”
