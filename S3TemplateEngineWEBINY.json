@@ -23,7 +23,7 @@
         },
         "WebinyModels": {
             "Type": "String",
-            "Description": "Enter the names of the Webiny models you want to use in S3TemplateEngine as comma seperated list."
+            "Description": "Enter the names of the Webiny models you want to use in S3TemplateEngine as JSON Array e.g. ['article','myawesomecontenttype']"
         }
     },
     "Conditions": {
