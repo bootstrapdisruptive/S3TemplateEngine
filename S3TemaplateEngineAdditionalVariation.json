@@ -591,6 +591,15 @@
                       ]
                   ]
               },
+              "OwnershipControls":{
+                "Rules":[{"ObjectOwnership": "ObjectWriter"}]
+            },
+            "PublicAccessBlockConfiguration":{
+                "BlockPublicAcls" : false,
+                "BlockPublicPolicy" : true,
+                "IgnorePublicAcls" : false,
+                "RestrictPublicBuckets" : false
+            },              
               "WebsiteConfiguration": {
                   "ErrorDocument": "404.html",
                   "IndexDocument": "index.html"
