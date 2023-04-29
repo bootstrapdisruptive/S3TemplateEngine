@@ -697,13 +697,14 @@ Replaces the command with a defined HTML template multiple times. Exactly once f
 ```html
 <dbmulti>*json*</dbmulti>
 ```
-Whereas *json* is a json object with the following attributes:
+Whereas *json* is a json object with the following attributes, attribute "limit" is optional:
 ```json
 {
   "filter":[
     {"AttributeName":{"DynamoDBType":"AttributeContent"}},
     ...
   ],
+  "limit": max number of elements to return,
   "template":"an HTML template, that will probably contain <dbitem> elements"
 }
 ```
@@ -713,6 +714,7 @@ __Hint:__ You can sort entries by adding a number field named "order" to your We
 ```html
 <dbmulti>{
     "filter":[{"forWebsite":{"BOOL":true}}],
+    "limit":3,
     "template":"<a href='artikeldetail-<dbitem>id</dbitem>.html'><h2><dbitem>headline</dbitem></h2><div class='content'><dbitem>readingtime</dbitem>&nbsp;min</div></a>"
 }</dbmulti>
 ```
