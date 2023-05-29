@@ -1,6 +1,8 @@
 # S3TemplateEngine
 S3TemplateEngine is a lightweight template engine for AWS serverless computing, helping you create AWS S3 / AWS Cloudfront hosted websites. It optionally integrates Webiny.
 
+![image](https://bootstrapdisruptive.de/gfx/img/logo_small.png)
+
 ## Table of Contents
 1. [Motivation](#Motivation)
 2. [Concept](#Concept)
