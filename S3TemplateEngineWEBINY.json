@@ -123,7 +123,6 @@
                         ]
                     ]
                 },
-                "ReservedConcurrentExecutions": 1,
                 "Description": "Receives a S3 stream and processes updates into sitemap.xml updates.",
                 "MemorySize": 2048,
                 "Role": {
