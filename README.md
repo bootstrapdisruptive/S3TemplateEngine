@@ -585,12 +585,12 @@ All you have to do is to follow the installation paragraph, and you can use your
      * model name "staticCodeContent", containing
        * a text field called "contentid" with the restriction "unique"
        * a long text field "content"
-         * This model will be used for specific conetent you only have one instance of, that is source code, like a tracking pixel   
+         * This model will be used for specific content you only have one instance of, that is source code, like a tracking pixel   
          * It will be available via it's "contentid", if you want to hand these over to editors, I recommend prepareing the available contentid values as predefined value
      * model name "staticContent", containing
        * a text field called "contentid" with the restriction "unique"
        * a rich text field "content"
-         * This one will be used for specific conetent you only have one instance of, like the "about us" page
+         * This one will be used for specific content you only have one instance of, like the "about us" page
          * It will be available via it's "contentid", if you want to hand these over to editors, I recommend prepareing the available contentid values as predefined value
 </details>
 <details>
