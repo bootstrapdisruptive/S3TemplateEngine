@@ -141,7 +141,7 @@
                         ]
                     ]
                 },
-                "Runtime": "nodejs16.x",
+                "Runtime": "nodejs20.x",
                 "Tags": [
                     {
                         "Key": "env",
@@ -216,7 +216,7 @@
                         ]
                     ]
                 },
-                "Runtime": "nodejs16.x",
+                "Runtime": "nodejs20.x",
                 "Tags": [
                     {
                         "Key": "env",
