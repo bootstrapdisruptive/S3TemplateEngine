@@ -10,5 +10,8 @@
   "bugs": {
     "url": "https://github.com/HOKComics/S3TemplateEngine/issues"
   },
-  "homepage": "https://github.com/HOKComics/S3TemplateEngine#readme"
+  "homepage": "https://github.com/HOKComics/S3TemplateEngine#readme",
+  "dependencies": {
+    "jsonpack": "^1.1.5"
+  }
 }
