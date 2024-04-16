@@ -706,6 +706,7 @@ Whereas *json* is a json object with the following attributes, attribute "limit"
     {"AttributeName":{"DynamoDBType":"AttributeContent"}},
     ...
   ],
+  "filtertype": 'contains', if the query checks a multi select webiny entry
   "limit": max number of elements to return,
   "template":"an HTML template, that will probably contain <dbitem> elements"
 }
