@@ -219,16 +219,6 @@
 					"LambdaConfigurations": [
 						{
 							"Event": "s3:ObjectCreated:*",
-							"Filter": {
-								"S3Key": {
-									"Rules": [
-										{
-											"Name": "prefix",
-											"Value": "files/"
-										}
-									]
-								}
-							},
 							"Function": {
 								"Fn::GetAtt": [
 									"LHOKMOVEFILE",
@@ -238,171 +228,9 @@
 						},
 						{
 							"Event": "s3:ObjectRemoved:*",
-							"Filter": {
-								"S3Key": {
-									"Rules": [
-										{
-											"Name": "prefix",
-											"Value": "files/"
-										}
-									]
-								}
-							},
 							"Function": {
 								"Fn::GetAtt": [
 									"LHOKMOVEFILE",
-									"Arn"
-								]
-							}
-						},
-						{
-							"Event": "s3:ObjectCreated:*",
-							"Filter": {
-								"S3Key": {
-									"Rules": [
-										{
-											"Name": "prefix",
-											"Value": "gfx/"
-										}
-									]
-								}
-							},
-							"Function": {
-								"Fn::GetAtt": [
-									"LHOKMOVEFILE",
-									"Arn"
-								]
-							}
-						},
-						{
-							"Event": "s3:ObjectRemoved:*",
-							"Filter": {
-								"S3Key": {
-									"Rules": [
-										{
-											"Name": "prefix",
-											"Value": "gfx/"
-										}
-									]
-								}
-							},
-							"Function": {
-								"Fn::GetAtt": [
-									"LHOKMOVEFILE",
-									"Arn"
-								]
-							}
-						},
-						{
-							"Event": "s3:ObjectCreated:*",
-							"Filter": {
-								"S3Key": {
-									"Rules": [
-										{
-											"Name": "prefix",
-											"Value": "js/"
-										}
-									]
-								}
-							},
-							"Function": {
-								"Fn::GetAtt": [
-									"LHOKMOVEFILE",
-									"Arn"
-								]
-							}
-						},
-						{
-							"Event": "s3:ObjectRemoved:*",
-							"Filter": {
-								"S3Key": {
-									"Rules": [
-										{
-											"Name": "prefix",
-											"Value": "js/"
-										}
-									]
-								}
-							},
-							"Function": {
-								"Fn::GetAtt": [
-									"LHOKMOVEFILE",
-									"Arn"
-								]
-							}
-						},
-						{
-							"Event": "s3:ObjectCreated:*",
-							"Filter": {
-								"S3Key": {
-									"Rules": [
-										{
-											"Name": "prefix",
-											"Value": "website/"
-										}
-									]
-								}
-							},
-							"Function": {
-								"Fn::GetAtt": [
-									"LHOKRENDERHTML",
-									"Arn"
-								]
-							}
-						},
-						{
-							"Event": "s3:ObjectRemoved:*",
-							"Filter": {
-								"S3Key": {
-									"Rules": [
-										{
-											"Name": "prefix",
-											"Value": "website/"
-										}
-									]
-								}
-							},
-							"Function": {
-								"Fn::GetAtt": [
-									"LHOKRENDERHTML",
-									"Arn"
-								]
-							}
-						},
-						{
-							"Event": "s3:ObjectCreated:*",
-							"Filter": {
-								"S3Key": {
-									"Rules": [
-										{
-											"Name": "prefix",
-											"Value": "part/"
-										}
-									]
-								}
-							},
-							"Function": {
-								"Fn::GetAtt": [
-									"LHOKRENDERHTML",
-									"Arn"
-								]
-							}
-						},
-						{
-							"Event": "s3:ObjectRemoved:*",
-							"Filter": {
-								"S3Key": {
-									"Rules": [
-										{
-											"Name": "prefix",
-											"Value": "part/"
-										}
-									]
-								}
-							},
-							"Function": {
-								"Fn::GetAtt": [
-									"LHOKRENDERHTML",
 									"Arn"
 								]
 							}
@@ -524,6 +352,17 @@
 									"\" } } ] }"
 								]
 							]
+						},
+						"render_lambda_name": {
+							"Fn::Join": [
+								"_",
+								[
+									{
+										"Ref": "Environment"
+									},
+									"HOK_render_html_files"
+								]
+							]
 						}
 					}
 				},
@@ -538,7 +377,7 @@
 						]
 					]
 				},
-				"Description": "Receives a S3 stream and moves files inside to target bucket.",
+				"Description": "Receives a S3 stream and, according to file suffiix, calls rendering or moves files inside to target bucket.",
 				"MemorySize": 2048,
 				"Role": {
 					"Fn::GetAtt": [
@@ -679,8 +518,9 @@
 					"arn:aws:iam::aws:policy/AWSOpsWorksCloudWatchLogs",
 					"arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess",
 					"arn:aws:iam::aws:policy/AmazonS3FullAccess",
-                    "arn:aws:iam::aws:policy/AWSStepFunctionsFullAccess",
-                    "arn:aws:iam::aws:policy/CloudFrontFullAccess"
+          "arn:aws:iam::aws:policy/AWSStepFunctionsFullAccess",
+          "arn:aws:iam::aws:policy/CloudFrontFullAccess",
+					"arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole"
 				],
 				"AssumeRolePolicyDocument": {
 					"Version": "2012-10-17",

@@ -126,19 +126,24 @@ Use your preferred way to pull the project, or (if you are not that experienced 
 </details>
 
 ## Useage
-Just put your template (usual website files, html with the additional commands shown below) in the "prod-website-code-\<your page name\>" s3 bucket. The system will behave as follows:
+Just put your template (usual website files, html with the additional commands shown below) in the "prod-website-code-\<your page name\>" s3 bucket. The system will process all files with the suffix .htm, .hmtl, .part and just move the other file suffixes unchanged. 
 
-**Content from the following folders will be synced (copied or deleted) to the output S3 bucket:**
- * files/ (usually used for downloads like pdfs)
- * gfx/ (usually used for visuals used on the website and css files)
- * js/ (used for javascript files) 
-
-**Content from the following folders will be processed with the commands shown below:**
- * website/ (will be the root of the output folder)
-   * The following files are madatory:
+**Be aware:**
+ * website/ will be the root of the output folder, so this
+   * website
      * index.html (your main page)
      * 404.html (your error page)
- * part/   
+    * gfx
+     * mylogo.gif
+    * app
+      * app.html    
+ * will end up like this
+    * index.html (your main page)
+    * 404.html (your error page)
+    * gfx
+     * mylogo.gif
+    * app
+      * app.html    
 
 **Other folders and files int the root will be ignored**
 
