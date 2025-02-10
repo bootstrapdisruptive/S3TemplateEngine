@@ -122,7 +122,7 @@ Use your preferred way to pull the project, or (if you are not that experienced 
    * Write "permanently delete" in the verification tetx field and click "Empty"
    * Click on "Exit"
    * Click on "Delete"
-   * Write the name of your "*S3LambdaBucket*" in the verification tetx field and click "Delete bucket"
+   * Write the name of your "*S3LambdaBucket*" in the verification text field and click "Delete bucket"
 </details>
 
 ## Useage
@@ -139,7 +139,7 @@ Renders a certain code only, if a condition is met. Currently the only available
 ```html
 <part>*name*</part>
 ```
-Whereas *name* is a filename or path/filename inside the "part/" directory.
+Whereas *name* is a filename or path/filename leading to a .part file.
 ### Example
 ```html
     <head>
