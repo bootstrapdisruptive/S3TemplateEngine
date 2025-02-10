@@ -126,27 +126,10 @@ Use your preferred way to pull the project, or (if you are not that experienced 
 </details>
 
 ## Useage
-Just put your template (usual website files, html with the additional commands shown below) in the "prod-website-code-\<your page name\>" s3 bucket. The system will process all files with the suffix .htm, .hmtl, .part and just move the other file suffixes unchanged. 
-
-**Be aware:**
- * website/ will be the root of the output folder, so this
-   * website
-     * index.html (your main page)
-     * 404.html (your error page)
-    * gfx
-     * mylogo.gif
-    * app
-      * app.html    
- * will end up like this
-    * index.html (your main page)
-    * 404.html (your error page)
-    * gfx
-     * mylogo.gif
-    * app
-      * app.html    
+Just put your template (usual website files, html with the additional commands shown below) in the "prod-website-code-\<your page name\>" s3 bucket. The system will process all files with the suffix .htm, .hmtl, .part and just move the other file suffixes unchanged.  
 
 ## Commands
-Inside the files you put into "website/" and "part/", you can use the following tags:
+Inside your .html and .part files you can use the following tags:
 <details>
   <summary> &lt;part&gt; - Reusing code from other files</summary>
  
