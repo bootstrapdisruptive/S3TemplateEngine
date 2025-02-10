@@ -145,8 +145,6 @@ Just put your template (usual website files, html with the additional commands s
     * app
       * app.html    
 
-**Other folders and files int the root will be ignored**
-
 ## Commands
 Inside the files you put into "website/" and "part/", you can use the following tags:
 <details>
