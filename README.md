@@ -638,8 +638,8 @@ All you have to do is to follow the installation paragraph, and you can use your
    * Make sure you are in the correct region
    * Clik on "tables" 
    * Click on your Webiny table (usually it's named "webiny-<7 digit code>")    
-   * In “Export and Streams” -> “DynamoDB stream details” click on "Enable"
-   * Choose “New and old images” and click on “Enable stream”
+   * In “Export and Streams” -> “DynamoDB stream details” click on "Turn On"
+   * Choose “New and old images” and click on “Turn on stream”
    * In “DynamoDB stream details” click on “Create trigger”
    * Choose “PROD_HOK_transfer_published_item” (or “DEV_HOK_transfer_published_item” or similar, depending on your enviroment). Choose a Batch size of 1 and click “Create trigger”
 </details>

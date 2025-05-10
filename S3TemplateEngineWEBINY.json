@@ -23,7 +23,7 @@
         },
         "WebinyModels": {
             "Type": "String",
-            "Description": "Enter the names of the Webiny models you want to use in S3TemplateEngine as JSON Array e.g. ['article','myawesomecontenttype']"
+            "Description": "Enter the names of the Webiny models you want to use in S3TemplateEngine as JSON Array e.g. [\"article\",\"myawesomecontenttype\"]"
         }
     },
     "Conditions": {
@@ -141,7 +141,7 @@
                         ]
                     ]
                 },
-                "Runtime": "nodejs20.x",
+                "Runtime": "nodejs22.x",
                 "Tags": [
                     {
                         "Key": "env",
@@ -216,7 +216,7 @@
                         ]
                     ]
                 },
-                "Runtime": "nodejs20.x",
+                "Runtime": "nodejs22.x",
                 "Tags": [
                     {
                         "Key": "env",
