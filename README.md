@@ -94,7 +94,9 @@ Use your preferred way to pull the project, or (if you are not that experienced 
      * Click on "Next"
      * Fill out Stack Name and Parameters
      * Click "Next"
+     * Check "I acknowledge that AWS CloudFormation might create IAM resources."
      * Check "I acknowledge that AWS CloudFormation might create IAM resources with custom names."
+     * Check "I acknowledge that AWS CloudFormation might require the following capability: CAPABILITY_AUTO_EXPAND"
      * Click "Create Stack"
 </details>
 <details>
