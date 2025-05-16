@@ -52,7 +52,7 @@ All you have to do is follow the installation paragraph, and you can write your 
 
 Use your preferred way to pull the project, or (if you are not that experienced with git), do it manually:
 
-   * Go to the project github page ( https://github.com/HOKComics/S3TemplateEngine )
+   * Go to the project github page ( https://github.com/ProjectDocHelp/S3TemplateEngine )
 
    * Right Click on "S3TemplateEngine.json" and choose "save link as"
    * Download the file ( __Hint: this file is refered as "*S3TemaplateEngine.json*" later on__ )
