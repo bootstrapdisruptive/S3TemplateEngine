@@ -592,7 +592,7 @@ All you have to do is to follow the installation paragraph, and you can use your
   <summary>Download the github repository.</summary>
     If you pulled the project in the S3TemplateEngine installation: fine, else do it manually:
 
-   * Go to the project github page ( https://github.com/HOKComics/S3TemplateEngine )
+   * Go to the project github page ( https://github.com/ProjectDocHelp/S3TemplateEngine )
 
    * Right Click on "S3TemplateEngineWebiny.json" and choose "save link as"
    * Download the file ( __Hint: this file is refered as "*S3TemaplateEngineWebiny.json*" later on__ )
