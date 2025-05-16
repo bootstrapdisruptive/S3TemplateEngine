@@ -58,7 +58,7 @@ Use your preferred way to pull the project, or (if you are not that experienced 
    * Download the file ( __Hint: this file is refered as "*S3TemaplateEngine.json*" later on__ )
    
    * Click on "S3"   
-   * Right Click on the file inside and choose "save link as"
+   * Right Click on the files inside and choose "save link as"
    * Download the file ( __Hint: this file is refered as "* files inside the s3 folder*" later on__ )
 
 </details>
